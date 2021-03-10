@@ -1,0 +1,149 @@
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-default elevation-4">
+        <!-- Brand Logo -->
+        <a href="{:url('Index/index')}" class="brand-link">
+            <img src="/static/plugins/AdminLTE/dist/img/AdminLTELogo.png" alt="SIYUCMS" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">SIYUCMS</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="{:session('admin.image') ?: '/static/plugins/AdminLTE/dist/img/user2-160x160.jpg'}" class="img-circle elevation-2">
+                </div>
+                <div class="info">
+                    <a href="{:url('Admin/edit',['id'=>session('admin.id')])}" class="d-block">{:session('admin.nickname') ?: session('admin.username')}</a>
+                </div>
+            </div>
+
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2 mb-2">
+                <ul class="nav nav-pills no_radius nav-sidebar flex-column nav-child-indent js_left_menu_show" data-widget="treeview" role="menu" data-accordion="true">
+                    <li data-item="0" class="nav-header nav-item_0">主导航</li>
+                    {volist name="$menus" id="vo"}
+                    <li data-item="0" class="nav-item nav-item_0 has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon {$vo.icon|default='fas fa-bars'}"></i>
+                            <p>
+                                {$vo.title}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {volist name="vo.children" id="voo"}
+                            <li class="nav-item {if count($voo.children)}has-treeview{/if}">
+                                <a href="{if count($voo.children)}#{else /}{$voo.href}{/if}" class="nav-link">
+                                    <i class="{$voo.icon|default='far fa-circle'} nav-icon"></i>
+                                    <p>{$voo.title}{if count($voo.children)}<i class="right fas fa-angle-left"></i>{/if}</p>
+                                </a>
+                                {if count($voo.children)}
+                                <ul class="nav nav-treeview">
+                                    {volist name="voo.children" id="vooo"}
+                                    <li class="nav-item">
+                                        <a href="{$vooo.href}" class="nav-link">
+                                            <i class="{$vooo.icon|default='far fa-circle'} nav-icon"></i>
+                                            <p>{$vooo.title}</p>
+                                        </a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                                {/if}
+                            </li>
+                            {/volist}
+                        </ul>
+                    </li>
+                    {/volist}
+                    <li data-item="1" class="nav-header nav-item_1" style="display: none">内容管理</li>
+                    {volist name="$cates" id="vo"}
+                    <li data-item="1" class="nav-item nav-item_1 {if count($vo.sub)}has-treeview{/if}" style="display: none">
+                        <a href="{if count($vo.sub)}#{else /}{:url($vo.module.model_name.'/index',['cate_id'=>$vo.id])}{/if}" class="nav-link">
+                            <i class="fas fa-bars nav-icon"></i>
+                            <p>
+                                {$vo.cate_name}
+                                {if count($vo.sub)}<i class="right fas fa-angle-left"></i>{/if}
+                            </p>
+                        </a>
+                        {if count($vo.sub)}
+                        <ul class="nav nav-treeview">
+                            {volist name="vo.sub" id="voo"}
+                            <li class="nav-item">
+                                <a href="{:url($voo.module.model_name.'/index',['cate_id'=>$voo.id])}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        {$voo.cate_name}
+                                        {if count($voo.sub)}<i class="right fas fa-angle-left"></i>{/if}
+                                    </p>
+                                </a>
+                                {if count($voo.sub)}
+                                <ul class="nav nav-treeview">
+                                    {volist name="voo.sub" id="vooo"}
+                                    <li class="nav-item">
+                                        <a href="{:url($vooo.module.model_name.'/index',['cate_id'=>$vooo.id])}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>
+                                                {$vooo.cate_name}
+                                            </p>
+                                        </a>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                                {/if}
+                            </li>
+                            {/volist}
+                        </ul>
+                        {/if}
+                    </li>
+                    {/volist}
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <script>
+        // 主导航、内容管理切换
+        $(".js_left_menu li").click(function () {
+            // 通过 .index()方法获取元素下标（从0开始）
+            var _index = $(this).index();
+            // 让左侧菜单第 _index 个显示出来，其他的隐藏起来
+            $(".js_left_menu_show > li").hide();
+            $(".js_left_menu_show > li.nav-item_" + _index).show();
+            // 当前菜单添加选中效果，同级的移除选中效果
+            $(this).addClass('active').siblings('li').removeClass('active');
+        })
+
+        // 清空缓存
+        $(".js_clear_cash").click(function () {
+            var url = "{:url('index/clear')}";
+            $.modal.confirm('确定要清除缓存吗？', function () {
+                $.post(url, {
+                    del: true
+                }, function (result) {
+                    if (result.error == 0) {
+                        $.modal.alertSuccess(result.msg, function (index) {
+                            layer.close(index);
+                            $.pjax.reload('.content-wrapper'); // pjax 重载
+                        });
+                    } else {
+                        $.modal.alertError(result.msg);
+                    }
+                });
+            });
+        })
+
+    </script>

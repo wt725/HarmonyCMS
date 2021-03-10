@@ -1,0 +1,21 @@
+{if $layer == false}
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2019-{:date("Y")} <a href="https://siyucms.com" target="_blank">siyucms.com</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> {:config('app.siyu_version')}
+        </div>
+    </footer>
+{/if}
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+<button id="totop" title="返回顶部" style="display: none;"><i class="fa fa-chevron-up"></i></button>
+{include file="public/foot_css_js" /}
+</body>
+</html>

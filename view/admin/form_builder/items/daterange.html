@@ -1,0 +1,48 @@
+<div class="row dd_input_group no-gutters {$form[type].extra_class|default=''}" id="form_group_{$form[type].name}">
+    <label class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-1 dd_input_l col-form-label {notempty name="form[type].required"}is-required{/notempty}" for="{$form[type].name}">{$form[type].title|htmlspecialchars}</label>
+    <div class="col-9 col-sm-9 col-md-9 col-lg-6 col-xl-4">
+        <div class="input-group">
+            <input class="form-control" type="text" id="{$form[type].name}" name="{$form[type].name}"
+                   value="{$form[type].value|default=''}" placeholder="{$form[type].placeholder}"
+                   autocomplete="off" {$form[type].extra_attr|raw}>
+            <div class="input-group-append">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+    {notempty name="form[type].tips"}
+    <div class="col-12 offset-sm-2 offset-md-2 offset-lg-0 offset-xl-0 col-sm-10 col-md-10 col-lg-4 col-xl-7 dd_ts">
+        <small class="text-muted">
+            <i class="fa fa-info-circle"></i> {$form[type].tips|raw}
+        </small>
+    </div>
+    {/notempty}
+</div>
+
+<script>
+    $(function () {
+        $('#{$form[type].name}').daterangepicker({
+            showDropdowns: true,     // 年月份下拉框
+            timePicker: true,        // 显示时间
+            timePicker24Hour: true,  // 时间制
+            timePickerSeconds: true, // 时间显示到秒
+            ranges: {
+                '今天': [moment(), moment()],
+                '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                '上周': [moment().subtract(6, 'days'), moment()],
+                '前30天': [moment().subtract(29, 'days'), moment()],
+                '本月': [moment().startOf('month'), moment().endOf('month')],
+                '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            //timePicker: true,
+            //timePickerIncrement: 30,
+            locale: {
+                format: '{$form[type].format|convert_php_to_moment_format}',
+                applyLabel: '确定',       // 确定按钮文本
+                cancelLabel: '取消',      // 取消按钮文本
+                customRangeLabel: '自定义',
+            }
+        });
+    })
+</script>
+
