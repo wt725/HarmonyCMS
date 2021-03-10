@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{$title}</title>
+    <meta name="keywords" content="{$keywords}"/>
+    <meta name="description" content="{$description}"/>
+
+    <link rel="stylesheet" href="{$public}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$public}css/all.min.css">
+    <link rel="stylesheet" href="{$public}css/animate.css">
+    <link rel="stylesheet" href="{$public}css/nice-select.css">
+    <link rel="stylesheet" href="{$public}css/owl.min.css">
+    <link rel="stylesheet" href="{$public}css/odometer.css">
+    <link rel="stylesheet" href="{$public}css/magnific-popup.css">
+    <link rel="stylesheet" href="{$public}css/flaticon.css">
+    <link rel="stylesheet" href="{$public}css/main.css">
+    <link rel="shortcut icon" href="{$public}img/favicon.png" type="image/x-icon">
+
+    {block name='css'}{/block}
+
+</head>
+<body>
+
+<div class="overlayer" id="overlayer">
+    <div class="loader">
+        <div class="loader-inner"></div>
+    </div>
+</div>
+<a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+<div class="overlay"></div>
+<!-- ==========Header Section Starts Here========== -->
+<header>
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-wrapper">
+                <span>中国国际贸易促进委员会山东省委员会贸易投资服务中心</span>
+                <select class="select-bar">
+                    <option value="en">English</option>
+                    <option value="cn">中文</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="header-middle">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo d-none d-lg-block">
+                    <a href="/"><img src="{$system.logo}" alt="{$system.name}"></a>
+                </div>
+                <div class="info-area">
+                    <div class="info-item">
+                        <div class="info-thumb">
+                            <i class="flaticon-email"></i>
+                        </div>
+                        <div class="info-content">
+                            <h6 class="title">电子邮件</h6>
+                            <a href="Mailto:{$system.email}"><span class="__cf_email__"
+                                                                   data-cfemail="11727e7c61707f68747c70787d51767c70787d3f727e7c">{$system.email}</span></a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-thumb">
+                            <i class="flaticon-map"></i>
+                        </div>
+                        <div class="info-content">
+                            <h6 class="title">联系地址</h6>
+                            <span>{$system.address}</span>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="info-item">
+                        <ul class="header-social">
+                            <li>
+                                <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="#0"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#0"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                            <li>
+                                <a href="#0"><i class="fab fa-google-plus-g"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="header-area">
+                <div class="logo d-lg-none">
+                    <a href="/"><img src="{$system.logo}" alt="{$system.name}"></a>
+                </div>
+                <ul class="menu" id="nav">
+                    <li {if empty($cate[
+                    'topid'])}class="active"{/if}>
+                    <a href="/">首页</a>
+                    </li>
+                    {tp:nav name='nav'}
+                    <li {if $nav[
+                    'id'] == $cate['topid']}class="current"{/if}><a data-id="nav_key_{$key}" href="{$nav.url}">{$nav.cate_name}</a>
+                    {if $nav.sub}
+                    <ul class="submenu">
+                        {volist name="$nav.sub" id="v"}
+                        <li><a data-id="nav_sub_key_{$key}" href="{$v.url}">{$v.cate_name}</a></li>
+                        {/volist}
+                    </ul>
+                    {/if}
+                    </li>
+                    {/tp:nav}
+                    <li>
+                        <a href="#0">Pages</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="gallery.html">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="#0">Shop</a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="shop.html">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop-details.html">Shop Details</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#0">Account</a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="sign-up.html">Sign Up</a>
+                                    </li>
+                                    <li>
+                                        <a href="sign-in.html">Sign In</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="pricing-plan.html">Pricing Plan</a>
+                            </li>
+                            <li>
+                                <a href="privacy-policy.html">Privacy & Policy</a>
+                            </li>
+                            <li>
+                                <a href="terms-condition.html">Terms & Condition</a>
+                            </li>
+                            <li>
+                                <a href="refund-policy.html">Refund Policy</a>
+                            </li>
+                            <li>
+                                <a href="faq.html">Faqs</a>
+                            </li>
+                            <li>
+                                <a href="404.html">Error Page</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="ml-auto">
+                        <a href="#0" class="search-bar"><i class="fas fa-search"></i></a>
+                    </li>
+                </ul>
+                <div class="header-bar2 ml-auto d-lg-none">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="search-form-area">
+        <span class="hide-form">
+            <i class="fas fa-times"></i>
+        </span>
+    <form class="search-form">
+        <input type="text" placeholder="在这里搜索">
+        <button type="submit"><i class="flaticon-search"></i></button>
+    </form>
+</div>
+<!-- ==========Header Section Ends Here========== -->
+
+<!-- ==========Sponsor Section Starts Here========== -->
+{block name='main'}
+{/block}
+<!-- ==========Sponsor Section Ends Here========== -->
+
+<!-- ==========Footer Section Starts Here========== -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-wrapper">
+                <div class="footer-widget widget-about">
+                    <div class="footer-logo">
+                        <a href="/"><img src="{$system.logo}" alt="{$system.name}"></a>
+                    </div>
+                    <p>山东哈曼云信息科技有限公司专注于互联网+时代的软件开发，团队主创成员，都是多年 IT 界的精英人士。
+                        哈曼云专注于物联网、人工智能、企业 SAAS 服务平台，在获取各行业基础数据的同时，分别构筑各行业的垂直领域平台，
+                        以大数据的数据分析、数据挖掘，为行业的更好发展提供真实有效的帮助。</p>
+                    <div class="footer-contact">
+                        <a href="Tel:{$system.mobile_phone}" class="call">{$system.mobile_phone}</a>
+                        <a href="Mailto:{$system.email}" class="mail"><span class="__cf_email__">{$system.email}</span></a>
+                    </div>
+                </div>
+                <div class="footer-widget widget-link">
+                    <h5 class="title">友情链接</h5>
+                    <ul>
+                        {tp:link name='link'}
+                        <li><a target="_blank" href="{$link.url}">{$link.name}</a></li>
+                        {/tp:link}
+                    </ul>
+                </div>
+                <div class="footer-widget widget-link">
+                    <h5 class="title">关于我们</h5>
+                    <ul>
+                        <li>
+                            <a href="#0">公司简介</a>
+                        </li>
+                        <li>
+                            <a href="#0">企业文件</a>
+                        </li>
+                        <li>
+                            <a href="#0">资质荣誉</a>
+                        </li>
+                        <li>
+                            <a href="#0">项目案例</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-widget widget-link">
+                    <h5 class="title">快速导航</h5>
+                    <ul>
+                        <li>
+                            <a href="#0">官方微博</a>
+                        </li>
+                        <li>
+                            <a href="#0">留言建议</a>
+                        </li>
+                        <li>
+                            <a href="#0">APP下载</a>
+                        </li>
+                        <li>
+                            <a href="#0">微信公众号</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-wrapper">
+                <div class="item">
+                    <p class="m-0">Copyright &copy; 2018 - {:date('Y')} {$system.name} All rights reserved.</p>
+                </div>
+                <ul class="item">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    <li>
+                        <a href="#0">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="#0">新闻中心</a>
+                    </li>
+                    <li>
+                        <a href="#0">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ==========Footer Section Ends Here========== -->
+
+
+<script src="{$public}js/jquery-3.3.1.min.js"></script>
+<script src="{$public}js/modernizr-3.6.0.min.js"></script>
+<script src="{$public}js/plugins.js"></script>
+<script src="{$public}js/bootstrap.min.js"></script>
+<script src="{$public}js/isotope.pkgd.min.js"></script>
+<script src="{$public}js/magnific-popup.min.js"></script>
+<script src="{$public}js/wow.min.js"></script>
+<script src="{$public}js/viewport.jquery.js"></script>
+<script src="{$public}js/odometer.min.js"></script>
+<script src="{$public}js/nice-select.js"></script>
+<script src="{$public}js/owl.min.js"></script>
+<script src="{$public}js/main.js"></script>
+
+{block name='js'}{/block}
+</body>
+</html>
