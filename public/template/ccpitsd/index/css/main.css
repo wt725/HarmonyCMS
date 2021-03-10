@@ -1887,7 +1887,7 @@ header::before {
         padding-left: 30px;
     }
 
-    .header-area .menu.active {
+    .header-area .menu .active {
         -webkit-transform: scaleY(1);
         -ms-transform: scaleY(1);
         transform: scaleY(1);

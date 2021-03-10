@@ -94,16 +94,8 @@
                     <a href="/"><img src="{$system.logo}" alt="{$system.name}"></a>
                 </div>
                 <ul class="menu" id="nav">
-                    <li {if empty($cate['topid'])}class="current"{/if}>
+                    <li {if empty($cate['topid'])}class="active"{/if}>
                         <a href="/">首页</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="#0">Home One</a>
-                            </li>
-                            <li>
-                                <a href="index-2.html">Home Two</a>
-                            </li>
-                        </ul>
                     </li>
                     {tp:nav name='nav'}
                     <li {if $nav['id'] == $cate['topid']}class="current"{/if}><a data-id="nav_key_{$key}" href="{$nav.url}">{$nav.cate_name}</a>
