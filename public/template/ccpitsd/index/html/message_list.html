@@ -41,9 +41,11 @@
                     <textarea name="content" placeholder="留言内容" id="content"></textarea>
                 </div>
                 <div class="form-group">
+                    <input type="hidden" name="cate_id" value="{$cate.id}">
                     <input type="submit" value="提交">
                 </div>
             </form>
+            <p class="form-messege"></p>
         </div>
         <div class="row justify-content-center mb-30-none contact-wrapper-2">
             <div class="col-md-6 col-lg-4">
@@ -109,44 +111,13 @@
 <!-- ==========Maps Section Starts Here========== -->
 <div class="map-section">
     <div class="container">
-        <!--Baidu map Start-->
-        <div class="map" id="map"></div>
-        <!--引用百度地图API-->
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BDc7c62acf452d874903d46a73ebebb5"></script>
-        <script type="text/javascript">
-            //创建和初始化地图函数：
-            function initMap(){
-                createMap();//创建地图
-                setMapEvent();//设置地图事件
-                addMapControl();//向地图添加控件
-                addMapOverlay();//向地图添加覆盖物
-            }
-            function createMap(){
-                map = new BMap.Map("map");
-                map.centerAndZoom(new BMap.Point(116.302042,39.908469),14);
-            }
-            function setMapEvent(){
-                map.enableScrollWheelZoom();
-                map.enableKeyboard();
-                map.enableDragging();
-                map.enableDoubleClickZoom()
-            }
-            function addClickHandler(target,window){
-                target.addEventListener("click",function(){
-                    target.openInfoWindow(window);
-                });
-            }
-            function addMapOverlay(){
-            }
-            //向地图添加控件
-            function addMapControl(){
-                var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
-                map.addControl(navControl);
-            }
-            var map;
-            initMap();
-        </script>
-        <!--Baidu map End-->
+        <div style="width:603px;height:500px; border: 1px solid #ccc;" id="mapholder"></div>
+        <!--
+        <div style="margin: 20px 0;">你的当前位置：<span id="address"></span></div>
+        <label>经度(lng):</label><input type="text" id="lng" name="lng"><br>
+        <label>纬度(lat):</label><input type="text" id="lat" name="lat">
+        <div id="latlng" style="margin: 20px auto;"></div>
+        -->
     </div>
 </div>
 <!-- ==========Maps Section Ends Here========== -->
@@ -176,4 +147,88 @@
 </div>
 <!-- ==========Sponsor Section Ends Here========== -->
 
+{/block}
+
+{block name='js'}
+
+
+<script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.min.js"></script>
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=6LLBZ-QMLCX-HNA4L-T3ADN-4O3V5-BFFLB"></script>
+<script>
+    $("#mapholder").css("width", "100%");
+    var latnow, lngnow, center, map, markersArray = [];
+    latnow = 36.661633;
+    lngnow = 117.000977;
+    $("#lng").val(lngnow);
+    $("#lat").val(latnow);
+
+    if (latnow == 'undefined' || latnow == null || latnow == '' || latnow == 0) {
+        if (window.navigator.geolocation) {
+            window.navigator.geolocation.getCurrentPosition(handleSuccess);
+        }
+    } else {
+        center = new qq.maps.LatLng(latnow, lngnow);
+        init();
+    }
+    function init() {
+        map = new qq.maps.Map(document.getElementById('mapholder'),{
+            center: center,
+            zoom: 18
+        });
+        var marker = new qq.maps.Marker({
+            position: center,
+            map: map
+        });
+        markersArray.push(marker);
+        qq.maps.event.addListener(map, 'click', function(event) {
+            lngnow = event.latLng.getLng().toFixed(6);
+            latnow = event.latLng.getLat().toFixed(6);
+            $("#lng").val(lngnow);
+            $("#lat").val(latnow);
+            latLng = new qq.maps.LatLng(latnow, lngnow);
+            map.panTo(latLng);
+            geocoder.getAddress(latLng);
+            deleteOverlays();
+            addMarker(event.latLng);
+        });
+        geocoder = new qq.maps.Geocoder({
+            complete : function(result){
+                $("#address").html(result.detail.address);
+            }
+        });
+        geocoder.getAddress(center);
+    }
+    function handleSuccess(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        //转换GPS坐标为腾讯坐标
+        qq.maps.convertor.translate(new qq.maps.LatLng(lat,lng), 1, function(res){
+            center = res[0];
+            $("#latlng").append('GPS 坐标信息：<br>经度（lng）：' + lng + '<br>纬度（lat）：' + lat + '<br><br>腾讯地图 坐标信息：');
+            lat = center.getLat().toFixed(6);
+            lng = center.getLng().toFixed(6);
+            $('#lat').val(lat);
+            $('#lng').val(lng);
+            latnow = lat;
+            lngnow = lng;
+            init();
+            $("#latlng").append('<br>经度（lng）：' + lng + '<br>纬度（lat）：' + lat);
+        });
+    }
+    function addMarker(location) {
+        var marker = new qq.maps.Marker({
+            position: location,
+            map: map
+        });
+        markersArray.push(marker);
+    }
+    function deleteOverlays() {
+        if (markersArray) {
+            for (i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+    }
+</script>
 {/block}
