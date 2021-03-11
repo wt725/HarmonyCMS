@@ -1,0 +1,83 @@
+{extend name='base' /}
+
+{block name='main'}
+
+<!-- ==========Page Header Section Starts Here========== -->
+<section class="page-header bg_img" data-background="{tp:cate id=" $cate['topid']" type='image' /}">
+<div class="container">
+    <div class="page-header-content">
+        <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
+        <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">首页</a>
+            </li>
+            {tp:nav name='nav' id="$cate['topid']"}
+            <li><a {eq name="$cate.id" value="$nav.id" }class="active" {/eq} href="{$nav.url}">{$nav.cate_name}</a>
+            </li>
+            {/tp:nav}
+        </ul>
+    </div>
+</div>
+</section>
+<!-- ==========Page Header Section Ends Here========== -->
+
+
+<!-- ==========Pricing Section Starts Here========== -->
+<div class="pricing-section padding-top padding-bottom-2">
+    <div class="container">
+        <div class="row justify-content-center mb-30-none">
+            {tp:list name="list"}
+            <div class="col-lg-4 col-sm-10 col-md-6">
+                <!--<div class="pricing-item" style="height: 94%; background: url({$list.image|default='/uploads/20210310/download.jpg'});background-size: cover;">-->
+                <div class="pricing-item">
+                    <div class="pricing-header">
+                        <h4 class="description">{$list.create_time|date='Y-m-d'}</h4>
+                        <span>{$list.author}</span>
+                    </div>
+                    <ul>
+                        <li><strong>{$list.title}</strong></li>
+                        <li>来源：{$list.source}</li>
+                        <li>{$list.summary|default='暂无说明'}</li>
+                    </ul>
+                    <div class="pricing-body">
+                        <a href="{$list.download}" class="read-button active">立即下载</a>
+                    </div>
+                </div>
+            </div>
+            {/tp:list}
+            {if empty($list)}
+            <h2 class="aligncenter">暂无相关内容</h2>
+            {/if}
+        </div>
+    </div>
+</div>
+<!-- ==========Pricing Section Ends Here========== -->
+
+
+<!-- ==========Sponsor Section Starts Here========== -->
+<div class="sponsor-section padding-bottom padding-top">
+    <div class="container">
+        <div class="sponsor-slider owl-theme owl-carousel">
+            <div class="sponsor-item">
+                <img src="/uploads/20210310/client1.png" alt="sponsor">
+            </div>
+            <div class="sponsor-item">
+                <img src="/uploads/20210310/client2.png" alt="sponsor">
+            </div>
+            <div class="sponsor-item">
+                <img src="/uploads/20210310/client3.png" alt="sponsor">
+            </div>
+            <div class="sponsor-item">
+                <img src="/uploads/20210310/client5.png" alt="sponsor">
+            </div>
+            <div class="sponsor-item">
+                <img src="/uploads/20210310/client6.png" alt="sponsor">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==========Sponsor Section Ends Here========== -->
+
+
+{/block}
