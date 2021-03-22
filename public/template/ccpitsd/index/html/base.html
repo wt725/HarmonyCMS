@@ -38,9 +38,9 @@
         <div class="container">
             <div class="header-top-wrapper">
                 <span>中国国际贸易促进委员会山东省委员会贸易投资服务中心</span>
-                <select class="select-bar">
-                    <option value="en">English</option>
-                    <option value="cn">中文</option>
+                <select class="select-bar" onchange="window.location.href = this.options[this.selectedIndex].value">
+                    <option value="/index/english.html">English</option>
+                    <option value="/">中文</option>
                 </select>
             </div>
         </div>
@@ -112,6 +112,7 @@
                     {/if}
                     </li>
                     {/tp:nav}
+                    <!--
                     <li>
                         <a href="#0">Pages</a>
                         <ul class="submenu">
@@ -160,6 +161,7 @@
                             </li>
                         </ul>
                     </li>
+                      -->
                     <li class="ml-auto">
                         <a href="#0" class="search-bar"><i class="fas fa-search"></i></a>
                     </li>
