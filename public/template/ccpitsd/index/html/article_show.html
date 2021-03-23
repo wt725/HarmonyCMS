@@ -9,45 +9,32 @@
                 <div class="col-lg-8 mb-50-md-70 mb-lg-0">
                     <div class="post-item post-details">
                         <div class="post-thumb">
-                            <img src="../img/blog/blog4.jpg" alt="blog">
+                            <img src="{$info.image|default='/template/ccpitsd/index/img/blog/blog5.jpg'}" alt="{$info.title}">
                             <div class="post-date">
-                                <i class="far fa-calendar-alt"></i> October 22, 2019
+                                <i class="far fa-calendar-alt"></i> {$info.create_time|date="Y-m-d"}
                             </div>
                         </div>
                         <div class="post-content">
-                            <h4 class="title">Nonummy mauris ante viverra doloremque</h4>
-                            <p>Posuere justo diam, commodo wisi dolor vivamus non velit. Luctus faucibus eget id imdiet nibh motieid convallis libero consectetuer magna, montes curabitur, pellentesque luctus met quis tincidunt dui rem, met quis tincidunt dui dolorem, tortor in, felis a arcu massa, non ultricesPraesent pharetra in pellentesque fusce maecenas, convallis ac erat. Dui arcu urna morbi id lorem. Metus ut elementum, et tortor vitae integer, viverra felis neque eu blandit ut placerat, id nec, maecenas potenti dicta et mi pellentesque quis. Ipsum odit libero, non nibh feugiat pellentesque accusamus, orci in suspendisse.</p>
-                            <p>Eu ipsum, wisi vitae tristique facilisis metus erat, ut magna in luctus aliquam bibendum, varius a vestibulum arcu suspendisse nam nec. Erat lorem ipsum gravida nunc taciti, pellentesque et sint sem phasellus vitae morbi, proin quis magna turpis auctor consequat est, rhoncus et magna id at quis. Ducimus quam sed neque risus. Lectus class aenean, velit justo semper euismod amet suscipit vitae laoreet, neque ac dictumst quam praesent donec, cubilia neque congue. Nulla mus vivamus adipiscing. Suspendisse odio nunc sagittis praesent varius ipsum, ante tellus, natoque tempus ac a non aliquam, nulla egestas praesent, aenean condimentum sagittis</p>
-                            <blockquote>
-                                Posuere justo diam, commodo dolor vivamus nonit. Luctus faucibus eget id imdiet nibh mconvallis 
-                            </blockquote>
-                            <p>Posuere justo diam, commodo wisi dolor vivamus non velit. Luctus faucibus eget id imdiet nibh motieid convallis libero consectetuer magna, montes curabitur, pellentesque luctus met quis tincidunt dui rem, met quis tincidunt dui dolorem, tortor in, felis a arcu massa, non ultricesPraesent pharetra in pellentesque fusce maecenas, convallis ac erat. Dui arcu urna morbi id lorem. Metus ut elementum, et tortor vitae integer, viverra felis neque eu blandit ut placerat, id nec, maecenas potenti dicta et mi pellentesque quis. Ipsum odit libero, non nibh feugiat pellentesque accusamus, orci in suspendisse.</p>
-                            <p>Eu ipsum, wisi vitae tristique facilisis metus erat, ut magna in luctus aliquam bibendum, varius a vestibulum arcu suspendisse nam nec. Erat lorem ipsum gravida nunc taciti, pellentesque et sint sem phasellus vitae morbi, proin quis magna turpis auctor consequat est, rhoncus et magna id at quis. Ducimus quam sed neque risus. Lectus class aenean, velit justo semper euismod amet suscipit vitae laoreet, neque ac dictumst quam praesent donec, cubilia neque congue. Nulla mus vivamus adipiscing. Suspendisse odio nunc sagittis praesent varius ipsum, ante tellus, natoque tempus ac a non aliquam, nulla egestas praesent, aenean condimentum sagittis</p>
+                            <h4 class="title">{$info.title}</h4>
+
+                            {$info.content|raw}
+
                             <div class="author-area">
                                 <div class="author">
-                                    <a href="#0" class="thumb">
-                                        <img src="../img/blog/c1.png" alt="blog">
-                                    </a>
-                                    <span>By Radiantthemes</span>
+                                    <span>作者：{$info.author} 阅读量：{$info.hits} </span>
                                 </div>
                                 <ul class="share">
-                                    <li>Share</li>
-                                    <li>
-                                        <a href="#0"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#0"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#0"><i class="fab fa-linkedin-in"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#0"><i class="fab fa-instagram"></i></a>
-                                    </li>
+                                    {if $info.tags}
+                                    {foreach $info.tags as $key=>$vo }
+                                    <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                                    {/foreach}
+                                    {/if}
                                 </ul>
                             </div>
                         </div>
                     </div>
+
+                    <!--
                     <div class="comment-area">
                         <h3 class="title">03 Comment</h3>
                         <ul class="comment-wrapper">
@@ -129,85 +116,57 @@
                             </div>
                         </form>
                     </div>
+                    -->
+
                 </div>
-                <div class="col-lg-4 col-md-8">
-                    <div class="widget widget-search">
+                <div class="col-lg-4 col-md-6">
+                    <!--<div class="widget widget-search">
                         <form class="search-form">
                             <input type="text" placeholder="Search Keywords">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
-                    </div>
+                    </div>-->
                     <div class="widget widget-tags">
                         <ul>
-                            <li class="active">
-                                <a href="#0">Business Development</a>
-                            </li>
-                            <li>
-                                <a href="#0">Mutual Funds</a>
-                            </li>
-                            <li>
-                                <a href="#0">Marketing Stratecies</a>
-                            </li>
-                            <li>
-                                <a href="#0">Taxes & Efficiency</a>
-                            </li>
-                            <li>
-                                <a href="#0">Market Analysis</a>
-                            </li>
-                            <li>
-                                <a href="#0">Financial Services</a>
-                            </li>
+                            {tp:nav name='nav' id="$cate['topid']"}
+                            <li><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                            {/tp:nav}
                         </ul>
                     </div>
                     <div class="widget widget-posts">
                         <ul>
+                            {tp:list name="list" order="sort desc, hits desc" limit="10"}
                             <li>
                                 <div class="w-post-thumb">
-                                    <a href="#0"><img src="../img/blog/w1.png" alt="blog"></a>
+                                    <a href="#0"><img src="{$list.image}" alt="{$list.title}"></a>
                                 </div>
                                 <div class="w-post-content">
-                                    <h6 class="subtitle"><a href="#0">Business Wsho Held In Complex</a></h6>
-                                    <span>By Himels Nils</span>
+                                    <h6 class="subtitle"><a href="{$list.url}">{$list.title}</a></h6>
+                                    <span>{$list.create_time|date="Y-m-d"}</span>
                                 </div>
                             </li>
-                            <li>
-                                <div class="w-post-thumb">
-                                    <a href="#0"><img src="../img/blog/w2.png" alt="blog"></a>
-                                </div>
-                                <div class="w-post-content">
-                                    <h6 class="subtitle"><a href="#0">Illum incidunt, corrupti error natus id soluta necessitatibus nostrum est quod alias. Optio.</a></h6>
-                                    <span>By Himels Nils</span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="w-post-thumb">
-                                    <a href="#0"><img src="../img/blog/w3.png" alt="blog"></a>
-                                </div>
-                                <div class="w-post-content">
-                                    <h6 class="subtitle"><a href="#0">Numquam, exercitationem minima ex quam dolor sint voluptate! Ducimus, temporibus.</a></h6>
-                                    <span>By Himels Nils</span>
-                                </div>
-                            </li>
+                            {/tp:list}
                         </ul>
                     </div>
-                    <div class="widget widget-download">
-                        <ul>
-                            <li>
-                                <a href="#0" class="active"><i class="far fa-file-powerpoint"></i>Presentation.pdf</a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fas fa-file-alt"></i>Condimentum.Doc</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="widget widget-subscribe">
-                        <h5 class="title">Subscribe Us</h5>
-                        <form class="subscribe-form">
-                            <input type="text" placeholder="Search Keywords">
-                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
-                        </form>
-                    </div>
-                </div>
+                    <!--
+                        <div class="widget widget-download">
+                            <ul>
+                                <li>
+                                    <a href="#0" class="active"><i class="far fa-file-powerpoint"></i>Presentation.pdf</a>
+                                </li>
+                                <li>
+                                    <a href="#0"><i class="fas fa-file-alt"></i>Condimentum.Doc</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget-subscribe">
+                            <h5 class="title">Subscribe Us</h5>
+                            <form class="subscribe-form">
+                                <input type="text" placeholder="Search Keywords">
+                                <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                            </form>
+                        </div>
+                      -->
             </div>
         </div>
     </div>
