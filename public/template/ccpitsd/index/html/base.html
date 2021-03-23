@@ -96,21 +96,21 @@
                     <a href="/"><img src="{$system.logo}" alt="{$system.name}"></a>
                 </div>
                 <ul class="menu" id="nav">
-                    <li {if empty($cate[
-                    'topid'])}class="active"{/if}>
-                    <a href="/">首页</a>
+                    <li>
+                        <a href="/">首页</a>
                     </li>
                     {tp:nav name='nav'}
-                    <li {if $nav[
-                    'id'] == $cate['topid']}class="current"{/if}><a data-id="nav_key_{$key}" href="{$nav.url}">{$nav.cate_name}</a>
-                    {if $nav.sub}
-                    <ul class="submenu">
-                        {volist name="$nav.sub" id="v"}
-                        <li><a data-id="nav_sub_key_{$key}" href="{$v.url}">{$v.cate_name}</a></li>
-                        {/volist}
-                    </ul>
-                    {/if}
-                    </li>
+                        <!--<li {if $nav['id'] == $cate['topid']}class="current"{/if}>-->
+                        <li>
+                            <a data-id="nav_key_{$key}" href="{$nav.url}">{$nav.cate_name}</a>
+                            {if $nav.sub}
+                                <ul class="submenu">
+                                    {volist name="$nav.sub" id="v"}
+                                    <li><a data-id="nav_sub_key_{$key}" href="{$v.url}">{$v.cate_name}</a></li>
+                                    {/volist}
+                                </ul>
+                            {/if}
+                        </li>
                     {/tp:nav}
                     <!--
                     <li>
@@ -263,16 +263,7 @@
                 </div>
                 <ul class="item">
                     <li>
-                        <a href="/">首页</a>
-                    </li>
-                    <li>
-                        <a href="#0">关于我们</a>
-                    </li>
-                    <li>
-                        <a href="#0">新闻中心</a>
-                    </li>
-                    <li>
-                        <a href="#0">联系我们</a>
+                        {$system.icp}
                     </li>
                 </ul>
             </div>

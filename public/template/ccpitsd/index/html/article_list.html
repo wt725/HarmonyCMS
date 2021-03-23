@@ -12,9 +12,9 @@
                     <li>
                         <a href="/">首页</a>
                     </li>
-                    {tp:nav name='nav' id="$cate['topid']"}
-                    <li><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
-                    {/tp:nav}
+                    {tp:position name='v'}
+                    <li><a href="{$v.url}">{$v.cate_name}</a></li>
+                    {/tp:position}
                 </ul>
             </div>
         </div>
@@ -28,166 +28,67 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 mb-50-md-70 mb-lg-0">
                     <div class="section-wrapper">
+                        {tp:list name="list"}
                         <div class="post-item">
                             <div class="post-thumb">
-                                <a href="article_show.html"><img src="/template/ccpitsd/index/img/blog/blog4.jpg" alt="blog"></a>
+                                <a href="{$list.url}"><img src="{$list.image|default='/template/ccpitsd/index/img/blog/blog4.jpg'}" alt="{$list.title}"></a>
                                 <div class="post-date">
-                                    <i class="flaticon-timetable"></i> October 22, 2019
+                                    <i class="flaticon-timetable"></i> {$list.create_time|date="Y-m-d"}
                                 </div>
                             </div>
                             <div class="post-content">
-                                <h4 class="title"><a href="article_show.html">Nonummy mauris ante viverra doloremque</a></h4>
-                                <p>Posuere justo diam, commodo wisi dolor vivamus non velit. Luctus faucibus eget id imdiet nibh motieid convallis libero consectetuer magna, montes curabitur, pellentesque luctus met quis tincidunt dui rem, met quis tincidunt dui dolorem, tortor in, felis a arcu massa, non ultrices</p>
+                                <h4 class="title"><a href="{$list.url}">{$list.title}</a></h4>
+                                <p>{$list.summary}</p>
                                 <div class="author-area">
                                     <div class="author">
-                                        <a href="#0" class="thumb">
+                                        <!--<a href="#0" class="thumb">
                                             <img src="/template/ccpitsd/index/img/blog/c1.png" alt="blog">
-                                        </a>
-                                        <span>By Radiantthemes</span>
+                                        </a>-->
+                                        <span>{$list.author}</span>
                                     </div>
-                                    <span class="comments"><i class="flaticon-book"></i>03 Comments</span>
+                                    <span class="comments"><i class="flaticon-book"></i>{$list.keywords}</span>
                                 </div>
                                 <div class="read-more">
-                                    <a href="#0">Reading Continue</a>
+                                    <a href="#0"></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="post-item">
-                            <div class="post-thumb">
-                                <a href="article_show.html"><img src="/template/ccpitsd/index/img/blog/blog5.jpg" alt="blog"></a>
-                                <div class="post-date">
-                                    <i class="flaticon-timetable"></i> October 22, 2019
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <h4 class="title"><a href="article_show.html">Buam consectetur sed aliquet pulvinaraenean
-
-                                    +
-                                    </a></h4>
-                                <p>Posuere justo diam, commodo wisi dolor vivamus non velit. Luctus faucibus eget id imdiet nibh motieid convallis libero consectetuer magna, montes curabitur, pellentesque luctus met quis tincidunt dui rem, met quis tincidunt dui dolorem, tortor in, felis a arcu massa, non ultrices</p>
-                                <div class="author-area">
-                                    <div class="author">
-                                        <a href="#0" class="thumb">
-                                            <img src="/template/ccpitsd/index/img/blog/c1.png" alt="blog">
-                                        </a>
-                                        <span>By Radiantthemes</span>
-                                    </div>
-                                    <span class="comments"><i class="flaticon-book"></i>03 Comments</span>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#0">Reading Continue</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="post-thumb">
-                                <a href="article_show.html"><img src="/template/ccpitsd/index/img/blog/blog6.jpg" alt="blog"></a>
-                                <div class="post-date">
-                                    <i class="flaticon-timetable"></i> October 22, 2019
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <h4 class="title"><a href="article_show.html">Aucibus suspendisse hac natoque nulla vitae</a></h4>
-                                <p>Posuere justo diam, commodo wisi dolor vivamus non velit. Luctus faucibus eget id imdiet nibh motieid convallis libero consectetuer magna, montes curabitur, pellentesque luctus met quis tincidunt dui rem, met quis tincidunt dui dolorem, tortor in, felis a arcu massa, non ultrices</p>
-                                <div class="author-area">
-                                    <div class="author">
-                                        <a href="#0" class="thumb">
-                                            <img src="/template/ccpitsd/index/img/blog/c1.png" alt="blog">
-                                        </a>
-                                        <span>By Radiantthemes</span>
-                                    </div>
-                                    <span class="comments"><i class="flaticon-book"></i>03 Comments</span>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#0">Reading Continue</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="post-thumb">
-                                <a href="article_show.html"><img src="/template/ccpitsd/index/img/blog/blog7.jpg" alt="blog"></a>
-                                <div class="post-date">
-                                    <i class="flaticon-timetable"></i> October 22, 2019
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <h4 class="title"><a href="article_show.html">Consectetur sed aliquet pulvinar ut aenean semper vitae.
-
-                                </a></h4>
-                                <p>Posuere justo diam, commodo wisi dolor vivamus non velit. Luctus faucibus eget id imdiet nibh motieid convallis libero consectetuer magna, montes curabitur, pellentesque luctus met quis tincidunt dui rem, met quis tincidunt dui dolorem, tortor in, felis a arcu massa, non ultrices</p>
-                                <div class="author-area">
-                                    <div class="author">
-                                        <a href="#0" class="thumb">
-                                            <img src="/template/ccpitsd/index/img/blog/c1.png" alt="blog">
-                                        </a>
-                                        <span>By Radiantthemes</span>
-                                    </div>
-                                    <span class="comments"><i class="flaticon-book"></i>03 Comments</span>
-                                </div>
-                                <div class="read-more">
-                                    <a href="#0">Reading Continue</a>
-                                </div>
-                            </div>
-                        </div>
+                        {/tp:list}
+                        {if empty($list)}
+                        <h2 class="aligncenter">暂无相关内容</h2>
+                        {/if}
                     </div>
-                    <ul class="blog-pagination">
-                        <li>
-                            <a href="#0"><i class="fas fa-angle-left"></i></a>
-                        </li>
-                        <li>
-                            <a href="#0">03</a>
-                        </li>
-                        <li>
-                            <a href="#0">04</a>
-                        </li>
-                        <li>
-                            <a href="#0">05</a>
-                        </li>
-                        <li>
-                            <a href="#0" class="active"><i class="fas fa-angle-right"></i></a>
-                        </li>
-                    </ul>
+                    <div class="blog-pagination">
+                        {$page|raw}
+                    </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="widget widget-search">
+                    <!--<div class="widget widget-search">
                         <form class="search-form">
                             <input type="text" placeholder="Search Keywords">
                             <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
-                    </div>
+                    </div>-->
                     <div class="widget widget-tags">
                         <ul>
-                            <li class="active">
-                                <a href="#0">Business Development</a>
-                            </li>
-                            <li>
-                                <a href="#0">Mutual Funds</a>
-                            </li>
-                            <li>
-                                <a href="#0">Marketing Stratecies</a>
-                            </li>
-                            <li>
-                                <a href="#0">Taxes & Efficiency</a>
-                            </li>
-                            <li>
-                                <a href="#0">Market Analysis</a>
-                            </li>
-                            <li>
-                                <a href="#0">Financial Services</a>
-                            </li>
+                            {tp:nav name='nav' id="$cate['topid']"}
+                            <li><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                            {/tp:nav}
                         </ul>
                     </div>
                     <div class="widget widget-posts">
                         <ul>
+                            {tp:list name="list" order="sort desc, hits desc" limit="10"}
                             <li>
                                 <div class="w-post-thumb">
                                     <a href="#0"><img src="/template/ccpitsd/index/img/blog/w1.png" alt="blog"></a>
                                 </div>
                                 <div class="w-post-content">
-                                    <h6 class="subtitle"><a href="#0">Business Wsho Held In Complex</a></h6>
-                                    <span>By Himels Nils</span>
+                                    <h6 class="subtitle"><a href="{$list.url}">{$list.title}</a></h6>
+                                    <span>{$list.create_time|date="Y-m-d"}</span>
                                 </div>
                             </li>
+                            {/tp:list}
                             <li>
                                 <div class="w-post-thumb">
                                     <a href="#0"><img src="/template/ccpitsd/index/img/blog/w2.png" alt="blog"></a>
@@ -208,27 +109,29 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="widget widget-download">
-                        <ul>
-                            <li>
-                                <a href="#0" class="active"><i class="far fa-file-powerpoint"></i>Presentation.pdf</a>
-                            </li>
-                            <li>
-                                <a href="#0"><i class="fas fa-file-alt"></i>Condimentum.Doc</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="widget widget-subscribe">
-                        <h5 class="title">Subscribe Us</h5>
-                        <form class="subscribe-form">
-                            <input type="text" placeholder="Search Keywords">
-                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                    <!--
+                        <div class="widget widget-download">
+                            <ul>
+                                <li>
+                                    <a href="#0" class="active"><i class="far fa-file-powerpoint"></i>Presentation.pdf</a>
+                                </li>
+                                <li>
+                                    <a href="#0"><i class="fas fa-file-alt"></i>Condimentum.Doc</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget-subscribe">
+                            <h5 class="title">Subscribe Us</h5>
+                            <form class="subscribe-form">
+                                <input type="text" placeholder="Search Keywords">
+                                <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                            </form>
+                        </div>
+                      -->
         </div>
     </div>
-    <!-- ==========Blog Section Ends Here========== -->
+</div>
+</div>
+<!-- ==========Blog Section Ends Here========== -->
 
 {/block}
