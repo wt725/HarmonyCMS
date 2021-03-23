@@ -1,0 +1,70 @@
+{extend name='base' /}
+
+{block name='main'}
+
+    <!-- ==========Page Header Section Starts Here========== -->
+    <section class="page-header bg_img" data-background="{tp:cate id="$cate['topid']" type='image' /}">
+        <div class="container">
+            <div class="page-header-content">
+                <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
+                <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/">首页</a>
+                    </li>
+                    {tp:position name='v'}
+                    <li><a href="{$v.url}">{$v.cate_name}</a></li>
+                    {/tp:position}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Page Header Section Ends Here========== -->
+
+    
+    <!-- ==========Gallery Section Starts Here========== -->
+    <section class="gallery-section padding-top padding-bottom oh">
+        <div class="container-fluid p-sm-0">
+            <div class="gallery-area">
+                {tp:list name="list"}
+                <div class="gallery-item">
+                    <img src="{$list.image}" alt="{$list.title}">
+                    <div class="gallery-content">
+                        <a href="{$list.image}" class="img-pop"><i class="flaticon-zoom-in"></i></a>
+                    </div>
+                </div>
+                {/tp:list}
+                {if empty($list)}
+                <h2 class="aligncenter">暂无相关内容</h2>
+                {/if}
+            </div>
+        </div>
+    </section>
+    <!-- ==========Gallery Section Ends Here========== -->
+
+
+    <!-- ==========Sponsor Section Starts Here========== -->
+    <div class="sponsor-section padding-bottom">
+        <div class="container">
+            <div class="sponsor-slider owl-theme owl-carousel">
+                <div class="sponsor-item">
+                    <img src="../img/sponsor/client1.png" alt="sponsor">
+                </div>
+                <div class="sponsor-item">
+                    <img src="../img/sponsor/client2.png" alt="sponsor">
+                </div>
+                <div class="sponsor-item">
+                    <img src="../img/sponsor/client3.png" alt="sponsor">
+                </div>
+                <div class="sponsor-item">
+                    <img src="../img/sponsor/client5.png" alt="sponsor">
+                </div>
+                <div class="sponsor-item">
+                    <img src="../img/sponsor/client6.png" alt="sponsor">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Sponsor Section Ends Here========== -->
+
+{/block}
