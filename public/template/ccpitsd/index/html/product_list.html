@@ -3,7 +3,7 @@
 {block name='main'}
 
 <!-- ==========Page Header Section Starts Here========== -->
-<section class="page-header bg_img" data-background="{tp:cate id="$cate['topid']" type='image' /}">
+<section class="page-header bg_img" data-background="{tp:cate id=" $cate['topid']" type='image' /}">
     <div class="container">
         <div class="page-header-content">
             <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
@@ -12,201 +12,41 @@
                 <li>
                     <a href="/">首页</a>
                 </li>
-                {tp:nav name='nav' id="$cate['topid']"}
-                <li><a {eq name="$cate.id" value="$nav.id" }class="active" {/eq} href="{$nav.url}">{$nav.cate_name}</a>
-                </li>
-                {/tp:nav}
+                <li>{tp:cate id="$cate['topid']" type='cate_name' /}</li>
             </ul>
         </div>
     </div>
 </section>
 <!-- ==========Page Header Section Ends Here========== -->
 
-
-<!-- ==========Project Section Starts Here========== -->
-<section class="project-section padding-top padding-bottom">
+<!-- ==========Service Section Starts Here========== -->
+<div class="service-section padding-top padding-bottom">
     <div class="container">
-        <div class="d-flex justify-content-center">
-            <ul class="filter">
-                <li data-check="*" class="active">All</li>
-                <li data-check=".investment">Investment</li>
-                <li data-check=".financial">Financial</li>
-                <li data-check=".marketing">Marketing</li>
-                <li data-check=".branding">Branding</li>
-            </ul>
-        </div>
-        <div class="project-area type-2">
-            <div class="project-item financial marketing">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project7.jpg" alt="project">
+        <div class="row justify-content-center mb-30-none">
+
+            {tp:list name="list"}
+            <div class="col-md-6 col-lg-4 mb-30">
+                <div class="service-item-2">
+                    <div class="service-thumb">
+                        <i class="flaticon-team"></i>
                     </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
+                    <div class="service-content">
+                        <h5 class="{$list.title}"><a href="{$list.url}">{$list.title}</a></h5>
+                        <p>{$list.summary}</p>
                     </div>
                 </div>
             </div>
-            <div class="project-item investment branding">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project8.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item financial branding">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project9.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item investment marketing style-2">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project10.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item financial branding">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project11.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item investment marketing">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project12.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item investment financial style-2">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project13.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item marketing branding">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project14.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item investment financial">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project15.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item marketing branding">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project16.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item financial style-2">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project17.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-item investment financial">
-                <div class="project-inner">
-                    <div class="project-thumb">
-                        <img src="../img/project/project18.jpg" alt="project">
-                    </div>
-                    <div class="project-content">
-                        <div class="content">
-                            <span class="info">Business</span>
-                            <h6 class="title">Investment Planning</h6>
-                            <a href="#0" class="read-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
+            {/tp:list}
+            {if empty($list)}
+            <h2 class="aligncenter">暂无相关内容</h2>
+            {/if}
+
+            <div class="col-md-12 col-sm-12">
+                {$page|raw}
             </div>
         </div>
     </div>
-</section>
-<!-- ==========Project Section Ends Here========== -->
+</div>
+<!-- ==========Service Section Ends Here========== -->
 
 {/block}

@@ -3,151 +3,29 @@
 {block name='main'}
 
 <!-- ==========Page Header Section Starts Here========== -->
-<section class="page-header bg_img" data-background="./assets/images/about/page-header.jpg">
-    <div class="container">
-        <div class="page-header-content">
-            <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
-            <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
-            <ul class="breadcrumb">
-                <li>
-                    <a href="/">首页</a>
-                </li>
-                {tp:nav name='nav' id="$cate['topid']"}
-                <li><a {eq name="$cate.id" value="$nav.id" } class="active" {/eq} href="{$nav.url}">{$nav.cate_name}</a>
-                </li>
-                {/tp:nav}
-            </ul>
-        </div>
+<section class="page-header bg_img" data-background="{tp:cate id=" $cate['topid']" type='image' /}">
+<div class="container">
+    <div class="page-header-content">
+        <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
+        <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">首页</a>
+            </li>
+            <li>{tp:cate id="$cate['topid']" type='cate_name' /}</li>
+        </ul>
     </div>
+</div>
 </section>
 <!-- ==========Page Header Section Ends Here========== -->
 
-
-<!-- ==========Project Section Starts Here========== -->
-<section class="project-details-section padding-top padding-bottom">
+<!-- ==========About Section Starts Here========== -->
+<div class="about-section padding-top-2 padding-bottom-2">
     <div class="container">
-        <div class="row project-details">
-            <div class="col-lg-8 mb-50-md-70 mb-lg-0">
-                <div class="item">
-                    <h4 class="title">Service Overview</h4>
-                    <p>Auctor consequat est, rhoncus et magna id at quis. Ducimus quam sed neque risus. Lectus class
-                        aenean, velit justo semper euismod mi eget, rutrum vitae, ut tempor purus dolorum sed class, vel
-                        diam lacus rutrum egestas. Odio in augue velit sapien suspendisse, ac mauris id, pellentesque
-                        sit quis leo, quam consectetur </p>
-                    <img src="../img/project/project21.jpg" alt="project">
-                </div>
-                <div class="item">
-                    <h4 class="title">About Project</h4>
-                    <p>Posuere torquent, ligula vel fusce massa mauris magna eu. Nulla integer sed. Turpis varius arcu
-                        donec risus dapibus arcu, vestibulum at ipsum. Hendrerit eget sapien id, est hac vel massa elit
-                        sodales punar, nulla ante malesuada, faucibus suspendisse hac natoque nulla vitae, felis in
-                        egestas tincidunt ornare ligula, nec enim turpis. Ementum erat cras id integer vivamus nulla,
-                        mattisCurabitur nascetur sollicitudin mus rutrum, egestas vivamus, nam aliquam nec arcu per
-                        massa, nulla et eros ultricies nunc, ultrices curabitur. Eu tellus velit erat vel, imperdiet
-                        elit velit ipsum tellus, duis vulputate eleifend enim euismod ac. Sapien similique aliquam
-                        euismod illum, pellentesque quis, tristique ut orci id vitae libero. A unde egestas consequat
-                        pede iusto, cum amet arcu neque sit nunc malesuada, vehicula quis metus mauris vel ipsum platea.
-                        Vestibulum auctor nibh volutpat in. Luctus aliquam mi venenatis nisl elit etiam, id molestie
-                        sit, imperdiet ac scelerisque in. Fusce blandit erat et faucibus morbi. Semper metus ea
-                        porttitor. Lacus sem ac ac arcu non nam, eaque id nulla, tempus odio sed posuere, dignissim
-                        dictum lobortis, integer ornare a urna.</p>
-                    <p>Nec viverra sit erat non arcu, nulla ante leo pretium luctus nunc, cursus integer et nunc
-                        placerat mauris a, sed quis, vivamus imperdiet aliquet leo et sit magna. Wisi lacinia viverra,
-                        vel vitae vestibulum fermentum, vel luctus, sed nibh egestas </p>
-                </div>
-                <div class="item">
-                    <h4 class="title">Project Gallery</h4>
-                    <div class="thumb-gallery row">
-                        <div class="col-sm-6 mb-30">
-                            <img src="../img/project/project22.jpg" class="w-100" alt="project">
-                        </div>
-                        <div class="col-sm-6 mb-30">
-                            <img src="../img/project/project23.jpg" class="w-100" alt="project">
-                        </div>
-                        <div class="col-sm-6 mb-30">
-                            <img src="../img/project/project24.jpg" class="w-100" alt="project">
-                        </div>
-                        <div class="col-sm-6 mb-30">
-                            <img src="../img/project/project25.jpg" class="w-100" alt="project">
-                        </div>
-                    </div>
-                </div>
-                <div class="item item-video">
-                    <div class="video-area">
-                        <img src="../img/project/video.jpg" alt="project">
-                        <a href="https://www.youtube.com/watch?v=GT6-H4BRyqQ" class="video-button popup"><i
-                                class="flaticon-play"></i></a>
-                    </div>
-                    <div class="content-area">
-                        <ul class="bal-list">
-                            <li>Lacus nulla tellus volutpat mauris. aenean in sed</li>
-                            <li>Consectetuer aliquam, a duis sit praese</li>
-                            <li>Quam nunc nibh non arcu ultricies.</li>
-                            <li>Accumsan interdum id consectetuer duis sit praesent</li>
-                        </ul>
-                        <p>Orbi viverra nonummy eget sed libero morbi. Etiam sit lacinia suspendisse sociosqu aliquam
-                            nunc. dictum class non ut consequat eget consectetuer. Suscipit est eleifend porta pharet
-                            nullam iaculis, </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="widget widget-info">
-                    <ul>
-                        <li>
-                            <h6 class="caption">Client</h6>
-                            <span>Onsult Trusted Client</span>
-                        </li>
-                        <li>
-                            <h6 class="caption">Categories</h6>
-                            <span>Investment, Trading</span>
-                        </li>
-                        <li>
-                            <h6 class="caption">Completed</h6>
-                            <span>December 01, 2019</span>
-                        </li>
-                        <li>
-                            <h6 class="caption">Project Budgets</h6>
-                            <span>$28,0000</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget widget-download">
-                    <ul>
-                        <li>
-                            <a href="#0" class="active"><i class="far fa-file-powerpoint"></i>Presentation.pdf</a>
-                        </li>
-                        <li>
-                            <a href="#0"><i class="fas fa-file-alt"></i>Condimentum.Doc</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget">
-                    <div class="client-item-2">
-                        <div class="client-thumb">
-                            <div class="thumb">
-                                <a href="#0"><img src="../img/client/client3.png" alt="client"></a>
-                            </div>
-                        </div>
-                        <div class="client-content">
-                            <h6 class="title">Abu Raihan Rafuj</h6>
-                            <span class="info">Client</span>
-                            <p>Neque nunc phasellus nulla pharetra massa libero. Sed enim enim magnis consequuntur, nisl
-                                neque </p>
-                            <div class="ratings yellow">
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                                <span class="fas fa-star"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h3>{$info.title}</h3>
+        {$info.content|raw}
     </div>
-</section>
-<!-- ==========Project Section Ends Here========== -->
+</div>
+<!-- ==========About Section Ends Here========== -->
 
 {/block}
