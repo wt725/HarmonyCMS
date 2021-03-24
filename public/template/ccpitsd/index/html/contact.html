@@ -22,30 +22,54 @@
 </section>
 <!-- ==========Page Header Section Ends Here========== -->
 
+<!-- ==========Maps Section Starts Here========== -->
+<div class="map-section">
+    <div class="container">
+        <!--Baidu map Start-->
+        <div class="map" id="map"></div>
+        <!--引用百度地图API-->
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BDc7c62acf452d874903d46a73ebebb5"></script>
+        <script type="text/javascript">
+            //创建和初始化地图函数：
+            function initMap(){
+                createMap();//创建地图
+                setMapEvent();//设置地图事件
+                addMapControl();//向地图添加控件
+                addMapOverlay();//向地图添加覆盖物
+            }
+            function createMap(){
+                map = new BMap.Map("map");
+                map.centerAndZoom(new BMap.Point(116.302042,39.908469),14);
+            }
+            function setMapEvent(){
+                map.enableScrollWheelZoom();
+                map.enableKeyboard();
+                map.enableDragging();
+                map.enableDoubleClickZoom()
+            }
+            function addClickHandler(target,window){
+                target.addEventListener("click",function(){
+                    target.openInfoWindow(window);
+                });
+            }
+            function addMapOverlay(){
+            }
+            //向地图添加控件
+            function addMapControl(){
+                var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+                map.addControl(navControl);
+            }
+            var map;
+            initMap();
+        </script>
+        <!--Baidu map End-->
+    </div>
+</div>
+<!-- ==========Maps Section Ends Here========== -->
 
 <!-- ==========Contact Section Starts Here========== -->
 <div class="contact-section padding-top bg_img" data-background="./assets/images/contact/contact-bg.png">
     <div class="container">
-        <div class="contact-wrapper">
-            <h4 class="title">联系我们</h4>
-            <form class="contact-form" id="contact-form" action="{:url('index/add')}" method="post">
-                <div class="form-group">
-                    <input type="text" name="title" placeholder="标题" id="title">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="姓名" id="name">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="phone" placeholder="电话" id="phone">
-                </div>
-                <div class="form-group w-100">
-                    <textarea name="content" placeholder="留言内容" id="content"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="提交">
-                </div>
-            </form>
-        </div>
         <div class="row justify-content-center mb-30-none contact-wrapper-2">
             <div class="col-md-6 col-lg-4">
                 <div class="contact-item">
@@ -102,56 +126,37 @@
                 </div>
             </div>
         </div>
+        <div class="contact-wrapper">
+            <h4 class="title">联系我们</h4>
+            <form class="contact-form" id="contact-form" action="{:url('index/add')}" method="post">
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="标题" id="title">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="姓名" id="name">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="phone" placeholder="电话" id="phone">
+                </div>
+                {if $system.message_code}
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <input type="text" name="message_code" placeholder="验证码">
+                    <img src="{:url('index/captcha')}" title="点击切换验证码">
+                </div>
+                {/if}
+                <div class="form-group w-100">
+                    <textarea name="content" placeholder="留言内容" id="content"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="cate_id" value="{$cate.id}">
+                    <input type="submit" value="提交">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <!-- ==========Contact Section Ends Here========== -->
-
-
-<!-- ==========Maps Section Starts Here========== -->
-<div class="map-section">
-    <div class="container">
-        <!--Baidu map Start-->
-        <div class="map" id="map"></div>
-        <!--引用百度地图API-->
-        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BDc7c62acf452d874903d46a73ebebb5"></script>
-        <script type="text/javascript">
-            //创建和初始化地图函数：
-            function initMap(){
-                createMap();//创建地图
-                setMapEvent();//设置地图事件
-                addMapControl();//向地图添加控件
-                addMapOverlay();//向地图添加覆盖物
-            }
-            function createMap(){
-                map = new BMap.Map("map");
-                map.centerAndZoom(new BMap.Point(116.302042,39.908469),14);
-            }
-            function setMapEvent(){
-                map.enableScrollWheelZoom();
-                map.enableKeyboard();
-                map.enableDragging();
-                map.enableDoubleClickZoom()
-            }
-            function addClickHandler(target,window){
-                target.addEventListener("click",function(){
-                    target.openInfoWindow(window);
-                });
-            }
-            function addMapOverlay(){
-            }
-            //向地图添加控件
-            function addMapControl(){
-                var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
-                map.addControl(navControl);
-            }
-            var map;
-            initMap();
-        </script>
-        <!--Baidu map End-->
-    </div>
-</div>
-<!-- ==========Maps Section Ends Here========== -->
-
 
 <!-- ==========Sponsor Section Starts Here========== -->
 <div class="sponsor-section padding-bottom padding-top">
