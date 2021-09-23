@@ -1,470 +1,291 @@
 ﻿{extend name='base' /}
 {block name='main'}
-        <!-- slider -->
-        <div id="slider">
-            <!-- revolution slider begin -->
-            <div class="fullwidthbanner-container">
-                <div id="revolution-slider">
-                    <ul>
-                        {tp:ad name='ad' id='1'}
-                        <li data-transition="fade" data-slotamount="7" data-masterspeed="2500" data-delay="5000">
-                            <!--  BACKGROUND IMAGE -->
-                            <img src="{$ad.image}" alt="">
+<!-- slider -->
+<div id="slider">
+    <!-- revolution slider begin -->
+    <div class="fullwidthbanner-container">
+        <div id="revolution-slider">
+            <ul>
+                {tp:ad name='ad' id='1'}
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="2500" data-delay="5000">
+                    <!--  BACKGROUND IMAGE -->
+                    <img src="{$ad.image}" alt="">
 
-                            <div class="tp-caption lft custom-font-2"
-                                data-x="center"
-                                data-y="184"
-                                data-speed="800"
-                                data-start="800"
-                                data-easing="easeInOutCubic">
-                                {$ad.name}
-                            </div>
+                    <div class="tp-caption lft custom-font-2"
+                         data-x="center"
+                         data-y="184"
+                         data-speed="800"
+                         data-start="800"
+                         data-easing="easeInOutCubic">
+                        {$ad.name}
+                    </div>
 
-                            <div class="tp-caption sfb custom-font-1"
-                                data-x="center"
-                                data-y="250"
-                                data-speed="800"
-                                data-start="1400"
-                                data-easing="easeInOutCubic">
-                                {$ad.description|raw|textareaBr}
-                            </div>
+                    <div class="tp-caption sfb custom-font-1"
+                         data-x="center"
+                         data-y="250"
+                         data-speed="800"
+                         data-start="1400"
+                         data-easing="easeInOutCubic">
+                        {$ad.description|raw|textareaBr}
+                    </div>
 
-                            <div class="tp-caption sfb"
-                                data-x="center"
-                                data-y="330"
-                                data-speed="800"
-                                data-start="1600"
-                                data-easing="easeInOutCubic">
-                                <a class="btn btn-slider" href="{$ad.url}">了解详情</a>
-                            </div>
-                        </li>
-                        {/tp:ad}
-                    </ul>
+                    <div class="tp-caption sfb"
+                         data-x="center"
+                         data-y="330"
+                         data-speed="800"
+                         data-start="1600"
+                         data-easing="easeInOutCubic">
+                        <a class="btn btn-slider" href="{$ad.url}">了解详情</a>
+                    </div>
+                </li>
+                {/tp:ad}
+            </ul>
+        </div>
+    </div>
+    <!-- revolution slider close -->
+</div>
+<!-- slider close -->
+
+<div class="clearfix"></div>
+
+<!-- content begin -->
+<div id="content" class="no-padding">
+
+    <!-- section begin -->
+    <section id="section-featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature no-margin">
+                        <i class="fa fa-bar-chart"></i>
+                        <h3>响应式设计</h3>
+                        <p>自动完美适应PC端、移动端</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature no-margin">
+                        <i class="fa fa-diamond"></i>
+                        <h3>随心定制化</h3>
+                        <p>多种功能模块、多种模板文件，随心定制</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature no-margin">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3>关键词优化</h3>
+                        <p>每一页都可以精确设置SEO搜索关键词，让搜索引擎精准收录</p>
+                    </div>
                 </div>
             </div>
-            <!-- revolution slider close -->
         </div>
-        <!-- slider close -->
+    </section>
+    <!-- section close -->
 
-        <div class="clearfix"></div>
-
-         <!-- content begin -->
-        <div id="content" class="no-padding">
-
-            <!-- section begin -->
-            <section id="section-featured">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="feature no-margin">
-                                <i class="fa fa-bar-chart"></i>
-                                <h3>响应式设计</h3>
-                                <p>自动完美适应PC端、移动端</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature no-margin">
-                                <i class="fa fa-diamond"></i>
-                                <h3>随心定制化</h3>
-                                <p>多种功能模块、多种模板文件，随心定制</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="feature no-margin">
-                                <i class="fa fa-bullhorn"></i>
-                                <h3>关键词优化</h3>
-                                <p>每一页都可以精确设置SEO搜索关键词，让搜索引擎精准收录</p>
-                            </div>
-                        </div>
+    <!-- section begin -->
+    <section id="section-about" class="bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="{$public}images/about/we-are-thumb-1.jpg" alt="about image" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-box">
+                        <h2 class="box-title">{$system.title}</h2>
+                        <div class="tiny-border"></div>
+                        <p>{$system.des}</p>
+                        <p>
+                            哈曼云专注于互联网+时代的软件开发，公司立志于深耕行业特色，为各行业的企业提供一站式 SAAS 服务平台，
+                            全面满足各行业企业高速发展的各方面需求。 在获取各行业基础数据的同时，分别构筑各行业的垂直领域平台，
+                            以大数据的数据分析、数据挖掘，为行业的更好发展提供真实有效的帮助。
+                        </p>
+                        <div class="divider-single"></div>
+                        <a href="/index/about.html" class="btn btn-primary btn-small">详细信息</a>
                     </div>
-                </div>        
-            </section>
-            <!-- section close -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
 
-            <!-- section begin -->
-            <section id="section-about" class="bg-grey">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <img src="{$public}images/about/we-are-thumb-1.jpg" alt="about image" class="img-responsive">
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="about-box">
-                                <h2 class="box-title">{$system.title}</h2>
-                                <div class="tiny-border"></div>
-                                <p>{$system.des}</p>
-                                <p>
-                                    哈曼云专注于互联网+时代的软件开发，公司立志于深耕行业特色，为各行业的企业提供一站式 SAAS 服务平台，
-                                    全面满足各行业企业高速发展的各方面需求。 在获取各行业基础数据的同时，分别构筑各行业的垂直领域平台，
-                                    以大数据的数据分析、数据挖掘，为行业的更好发展提供真实有效的帮助。
-                                </p>
-                                <div class="divider-single"></div>
-                                <a href="/index/about.html" class="btn btn-primary btn-small">详细信息</a>
-                            </div>
-                        </div>
+    <!-- section begin -->
+    <section id="section-project">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <h2 class="box-title">案例展示</h2>
+                        <div class="tiny-border"></div>
                     </div>
-                </div>        
-            </section>
-            <!-- section close -->
+                    <div id="portfolio-filter" class="pull-right">
+                        <ul id="filter">
+                            <li><a href="#" class="current" data-filter="*" title="">全部</a></li>
+                            {tp:nav name='v' id="8"}
+                            <li><a href="#" data-filter=".{$v.id}" title="">{$v.cate_name}</a></li>
+                            {/tp:nav}
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
 
-            <!-- section begin -->
-            <section id="section-project">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="pull-left">
-                                <h2 class="box-title">案例展示</h2>
-                                <div class="tiny-border"></div>
+                    <div id="projects-grid" class="projects-grid">
+                        {tp:list id='8' name='list' limit='8'}
+                        <div class="project-item {$list.cate_id}">
+                            <div class="project-item-inner">
+                                <img src="{$list.image}" alt="" class="img-responsive">
+                                <div class="project-details">
+                                    <p class="folio-title"><a href="#">{$list.title}</a></p>
+                                    {if $list.tags}
+                                    <p class="folio-cate">
+                                        <i class="fa fa-tag"></i>
+                                        {foreach $list.tags as $key=>$vo }
+                                        <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                                        {/foreach}
+                                    </p>
+                                    {/if}
+                                    <div class="folio-buttons">
+                                        <a href="{$list.image}" title="{$list.title}" class="folio"><i class="fa fa-search"></i></a>
+                                        <a href="{$list.url}"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="portfolio-filter" class="pull-right">
-                                <ul id="filter">
-                                    <li><a href="#" class="current" data-filter="*" title="">All</a></li>
-                                    <li><a href="#" data-filter=".business" title="">Business</a></li>
-                                    <li><a href="#" data-filter=".technology" title="">Technology</a></li>
-                                    <li><a href="#" data-filter=".marketing" title="">Marketing</a></li>
-                                    <li><a href="#" data-filter=".development" title="">Development</a></li>
-                                </ul>
-                            </div>
-                            <div class="clearfix"></div>
+                        </div>
+                        {/tp:list}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
 
-                            <div id="projects-grid" class="projects-grid">
-                                <div class="project-item business">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-1.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Plan For Your Bussiness</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/medium-1.jpg" title="Plan For Your Bussiness" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
+    <!-- section begin -->
+    <section id="section-testimonial" class="bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="testimonials-slider-wrapper">
+                    <div class="col-md-12">
+                        <h2 class="box-title">客户感言</h2>
+                        <div class="compact-buttons">
+                            <div class="testi-prev compact-prev"><i class="fa fa-angle-left"></i></div>
+                            <div class="testi-next compact-next"><i class="fa fa-angle-right"></i></div>
+                        </div>
+                        <div class="tiny-border"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="testimonials-slider-3">
+                        <div class="item">
+                            <div class="testi-boxes">
+                                <blockquote>
+                                    在软件选型方面，我认为应考虑厂商的三种能力。
+                                    第一是厂商的专业能力，把相关行业的经验带进软件，对业务梳理有非常好的借鉴作用。
+                                    第二是项目管控能力，制定详尽的软件实施计划，保质保量按计划完成。
+                                    第三个能力是软件开发能力、技术能力。凭借多年积累的...
+                                </blockquote>
+                                <div class="testi-info clearfix">
+                                    <img alt="" src="{$public}images/testimonial/thumb-1.png" class="img-circle">
+                                    <div class="testi-details">
+                                        <span>Cheryl Cruz</span>
+                                        Maketing Manager
                                     </div>
                                 </div>
-                                <div class="project-item business technology">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-2.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Business Growth Solutions</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/medium-2.jpg" title="Business Growth Solutions" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testi-boxes">
+                                <blockquote>
+                                    专业是必须，高性价比是我们的要求、良好的服务态度和丰富的行业经验是供应商被信赖的基础，这些也是我们之所以选择哈曼云的原因。在与哈曼云的合作中，我们还发现，它不只是一家纯粹的IT公司，更是一家拥有一批财务、预算管理方面专业顾问的公司。
+                                </blockquote>
+                                <div class=" testi-info clearfix">
+                                    <img alt="" src="{$public}images/testimonial/thumb-2.png" class="img-circle">
+                                    <div class="testi-details">
+                                        <span>John Walker</span>
+                                        Developent
                                     </div>
                                 </div>
-                                <div class="project-item development">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-3.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Enterprise Development</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/medium-3.jpg" title="Enterprise Development" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-item marketing">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-4.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Successful Business</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/medium-4.jpg" title="Successful Business" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-item marketing">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-5.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Marketing Strategy</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/medium-5.jpg" title="Marketing Strategy" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-item technology">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-6.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Effective Recruitment</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/medium-6.jpg" title="Effective Recruitment" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-item development">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-9.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Effective Recruitment</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/small-9.jpg" title="Effective Recruitment" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="project-item business">
-                                    <div class="project-item-inner">
-                                        <img src="{$public}images/projects/small-10.jpg" alt="" class="img-responsive">
-                                        <div class="project-details">
-                                            <p class="folio-title"><a href="#">Effective Recruitment</a></p>
-                                            <p class="folio-cate"><i class="fa fa-tag"></i><a href="#">Finance</a>, <a href="#">Marketing</a></p>
-                                            <div class="folio-buttons">
-                                                <a href="{$public}images/projects/small-10.jpg" title="Effective Recruitment" class="folio"><i class="fa fa-search"></i></a>
-                                                <a href="#"><i class="fa fa-link"></i></a>
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testi-boxes">
+                                <blockquote>
+                                    因公司发展需要，使用哈曼云软件。为我公司工作提供了便捷服务，让工作更加有效率！贵公司的客服一直耐心指导，服务态度非常好，遇到技术难题时及时联系专业人士指导我们。哈曼云良好的售后和服务态度，也是值得我们学习和借鉴的。祝贵公司生意红火，业务蒸蒸日上。
+                                </blockquote>
+                                <div class="testi-info clearfix">
+                                    <img alt="" src="{$public}images/testimonial/thumb-3.png" class="img-circle">
+                                    <div class="testi-details">
+                                        <span>Frank Furius</span>
+                                        Art Director
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>        
-            </section>
-            <!-- section close -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
 
-            <!-- section begin -->
-            <section id="section-testimonial" class="bg-grey">
-                <div class="container">
-                    <div class="row">
-						<div class="testimonials-slider-wrapper">
-							<div class="col-md-12">
-								<h2 class="box-title">客户感言</h2>
-								<div class="compact-buttons">
-									<div class="testi-prev compact-prev"><i class="fa fa-angle-left"></i></div>
-									<div class="testi-next compact-next"><i class="fa fa-angle-right"></i></div>
-								</div>
-								<div class="tiny-border"></div>
-							</div>
-							<div class="clearfix"></div>
-							<div class="testimonials-slider-3">
-								<div class="item">
-									<div class="testi-boxes">
-										<blockquote>
-                                            在软件选型方面，我认为应考虑厂商的三种能力。
-                                            第一是厂商的专业能力，把相关行业的经验带进软件，对业务梳理有非常好的借鉴作用。
-                                            第二是项目管控能力，制定详尽的软件实施计划，保质保量按计划完成。
-                                            第三个能力是软件开发能力、技术能力。凭借多年积累的...
-										</blockquote>
-										<div class="testi-info clearfix">
-											<img alt="" src="{$public}images/testimonial/thumb-1.png" class="img-circle">
-											<div class="testi-details">
-												<span>Cheryl Cruz</span>
-												Maketing Manager
-											</div>
-										</div>
-									</div>   
-								</div>
-								<div class="item">
-									<div class="testi-boxes">
-										<blockquote>
-                                            专业是必须，高性价比是我们的要求、良好的服务态度和丰富的行业经验是供应商被信赖的基础，这些也是我们之所以选择哈曼云的原因。在与哈曼云的合作中，我们还发现，它不只是一家纯粹的IT公司，更是一家拥有一批财务、预算管理方面专业顾问的公司。
-										</blockquote>
-										<div class=" testi-info clearfix">
-											<img alt="" src="{$public}images/testimonial/thumb-2.png" class="img-circle">
-											<div class="testi-details">
-												<span>John Walker</span>
-												Developent 
-											</div>
-										</div>
-									</div> 
-								</div>
-								<div class="item">
-									<div class="testi-boxes">
-										<blockquote>
-                                            因公司发展需要，使用哈曼云软件。为我公司工作提供了便捷服务，让工作更加有效率！贵公司的客服一直耐心指导，服务态度非常好，遇到技术难题时及时联系专业人士指导我们。哈曼云良好的售后和服务态度，也是值得我们学习和借鉴的。祝贵公司生意红火，业务蒸蒸日上。
-										</blockquote>
-										<div class="testi-info clearfix">
-											<img alt="" src="{$public}images/testimonial/thumb-3.png" class="img-circle">
-											<div class="testi-details">
-												<span>Frank Furius</span>
-												Art Director
-											</div>
-										</div>
-									</div> 
-								</div>
-								<div class="item">
-									<div class="testi-boxes">
-										<blockquote>
-											Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa
-										</blockquote>
-										<div class="testi-info clearfix">
-											<img alt="" src="{$public}images/testimonial/thumb-4.png" class="img-circle">
-											<div class="testi-details">
-												<span>Linda Campbell</span>
-												Sale Manager
-											</div>
-										</div>
-									</div> 
-								</div>
-								<div class="item">
-									<div class="testi-boxes">
-										<blockquote>
-											Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa
-										</blockquote>
-										<div class=" testi-info clearfix">
-											<img alt="" src="{$public}images/testimonial/thumb-2.png" class="img-circle">
-											<div class="testi-details">
-												<span>John Doe</span>
-												Marketing 
-											</div>
-										</div>
-									</div> 
-								</div>
-							</div>
-						</div>                        
+    <!-- section begin -->
+    <section id="section-cta">
+        <div class="sep-background-mask"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cal-to-action text-center">
+                        <span>我们已经为我们出色的客户完成了 <b>数百</b> 个项目，如果您有兴趣？</span>
+                        <a href="mailto:{$system.email}" class="btn btn-border-light">联系我们</a>
                     </div>
-                </div>        
-            </section>
-            <!-- section close -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
 
-            <!-- section begin -->
-            <section id="section-cta">
-                <div class="sep-background-mask"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="cal-to-action text-center">
-                                <span>我们已经为我们出色的客户完成了 <b>数百</b> 个项目，如果您有兴趣？</span>
-                                <a href="mailto:{$system.email}" class="btn btn-border-light">联系我们</a>
-                            </div>                            
+    <!-- section begin -->
+    <section id="section-news">
+        <div class="container">
+            <div class="row">
+                <div class="latest-blog-posts">
+                    <div class="col-md-12">
+                        <h2 class="box-title">新闻资讯</h2>
+                        <div class="compact-buttons">
+                            <div class="latest-prev compact-prev"><i class="fa fa-angle-left"></i></div>
+                            <div class="latest-next compact-next"><i class="fa fa-angle-right"></i></div>
                         </div>
+                        <div class="tiny-border"></div>
                     </div>
-                </div>        
-            </section>
-            <!-- section close -->
+                    <div class="clearfix"></div>
+                    <div class="latest-news-items-3">
 
-             <!-- section begin -->
-            <section id="section-news">
-                <div class="container">
-                    <div class="row">                                               
-						<div class="latest-blog-posts">
-							<div class="col-md-12"> 
-								<h2 class="box-title">新闻资讯</h2>
-								<div class="compact-buttons">
-									<div class="latest-prev compact-prev"><i class="fa fa-angle-left"></i></div>
-									<div class="latest-next compact-next"><i class="fa fa-angle-right"></i></div>
-								</div>
-								<div class="tiny-border"></div>
-							</div>
-							<div class="clearfix"></div>
-							<div class="latest-news-items-3">
-								<div class="item">
-									<div class="latest-blog-post-img">
-										<img src="{$public}images/news/thumb/thumb-1.jpg" alt="image name">
-										<div class="latest-blog-post-date">
-											06 <span>May</span>
-										</div>
-									</div>
-									<div class="latest-blog-post-details">
-										<p class="title"><a href="#">Help your business to success</a></p>
-										<p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar eu rhoncus ligula. Ut leo mauris, molestie imperdiet consequat in.</p>
-										<div class="latest-blog-post-data">
-											<span class="tags"><i class="fa fa-tags"></i> <a href="#">Development,</a> <a href="#">Maketing</a></span>
-											<span class="btn-read"><a href="#"><i class="fa fa-plus-square"></i> Read more</a></span>
-										</div>
-									</div>                                            
-								</div>
-								<div class="item">
-									<div class="latest-blog-post-img">
-										<img src="{$public}images/news/thumb/thumb-2.jpg" alt="image name">
-										<div class="latest-blog-post-date">
-											02 <span>May</span>
-										</div>
-									</div>
-									<div class="latest-blog-post-details">
-										<p class="title"><a href="#">Manage for collective creativity</a></p>
-										<p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar eu rhoncus ligula. Ut leo mauris, molestie imperdiet consequat in.</p>
-										<div class="latest-blog-post-data">
-											<span class="tags"><i class="fa fa-tags"></i> <a href="#">Development,</a> <a href="#">Maketing</a></span>
-											<span class="btn-read"><a href="#"><i class="fa fa-plus-square"></i> Read more</a></span>
-										</div>
-									</div>                                            
-								</div>
-								<div class="item">
-									<div class="latest-blog-post-img">
-										<img src="{$public}images/news/thumb/thumb-3.jpg" alt="image name">
-										<div class="latest-blog-post-date">
-											22 <span>Mar</span>
-										</div>
-									</div>
-									<div class="latest-blog-post-details">
-										<p class="title"><a href="#">Why Designers Need Marketing Skills</a></p>
-										<p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar eu rhoncus ligula. Ut leo mauris, molestie imperdiet consequat in.</p>
-										<div class="latest-blog-post-data">
-											<span class="tags"><i class="fa fa-tags"></i> <a href="#">Development,</a> <a href="#">Maketing</a></span>
-											<span class="btn-read"><a href="#"><i class="fa fa-plus-square"></i> Read more</a></span>
-										</div>
-									</div>                                            
-								</div>
-								<div class="item">
-									<div class="latest-blog-post-img">
-										<img src="{$public}images/news/thumb/thumb-4.jpg" alt="image name">
-										<div class="latest-blog-post-date">
-											18 <span>Mar</span>
-										</div>
-									</div>
-									<div class="latest-blog-post-details">
-										<p class="title"><a href="#">Design For The Human Brain</a></p>
-										<p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar eu rhoncus ligula. Ut leo mauris, molestie imperdiet consequat in.</p>
-										<div class="latest-blog-post-data">
-											<span class="tags"><i class="fa fa-tags"></i> <a href="#">Development,</a> <a href="#">Maketing</a></span>
-											<span class="btn-read"><a href="#"><i class="fa fa-plus-square"></i> Read more</a></span>
-										</div>
-									</div>                                            
-								</div>
-								<div class="item">
-									<div class="latest-blog-post-img">
-										<img src="{$public}images/news/thumb/thumb-5.jpg" alt="image name">
-										<div class="latest-blog-post-date">
-											08 <span>Feb</span>
-										</div>
-									</div>
-									<div class="latest-blog-post-details">
-										<p class="title"><a href="#">UX Design Trends For 2016</a></p>
-										<p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar eu rhoncus ligula. Ut leo mauris, molestie imperdiet consequat in.</p>
-										<div class="latest-blog-post-data">
-											<span class="tags"><i class="fa fa-tags"></i> <a href="#">Development,</a> <a href="#">Maketing</a></span>
-											<span class="btn-read"><a href="#"><i class="fa fa-plus-square"></i> Read more</a></span>
-										</div>
-									</div>                                            
-								</div>
-								<div class="item">
-									<div class="latest-blog-post-img">
-										<img src="{$public}images/news/thumb/thumb-6.jpg" alt="image name">
-										<div class="latest-blog-post-date">
-											06 <span>Feb</span>
-										</div>
-									</div>
-									<div class="latest-blog-post-details">
-										<p class="title"><a href="#">Mobile UX And User Expectations</a></p>
-										<p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar eu rhoncus ligula. Ut leo mauris, molestie imperdiet consequat in.</p>
-										<div class="latest-blog-post-data">
-											<span class="tags"><i class="fa fa-tags"></i> <a href="#">Development,</a> <a href="#">Maketing</a></span>
-											<span class="btn-read"><a href="#"><i class="fa fa-plus-square"></i> Read more</a></span>
-										</div>
-									</div>                                            
-								</div>
-							</div>								                                                      
+                        {tp:list id='4' name="list" order="sort, hits desc" limit="6"}
+                        <div class="item">
+                            <div class="latest-blog-post-img">
+                                <img src="{$list.image|default='/template/business/index/images/news/1.jpg'}" alt="{$list.title}">
+                                <div class="latest-blog-post-date">
+                                    {$list.create_time|date="d"}
+                                    <span>{$list.create_time|date="m"}月</span>
+                                </div>
+                            </div>
+                            <div class="latest-blog-post-details">
+                                <p class="title"><a href="{$list.url}">{$list.title}</a></p>
+                                <p>{$list.summary}</p>
+                                <div class="latest-blog-post-data">
+                                    {if $list.tags}
+                                    <span class="tags">
+                                        <i class="fa fa-tags"></i>
+                                        {foreach $list.tags as $key=>$vo }
+                                        <a href="{$vo.url}">{$vo.name}</a>
+                                        {/foreach}
+                                    </span>
+                                    {/if}
+                                    <span class="btn-read">
+                                        <a href="{$list.url}"><i class="fa fa-plus-square"></i> 查看详情</a></span>
+                                </div>
+                            </div>
                         </div>
+                        {/tp:list}
                     </div>
-                </div>        
-            </section>
-            <!-- section close -->
-{/block}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+    {/block}
