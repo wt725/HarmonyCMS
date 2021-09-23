@@ -274,7 +274,7 @@ nav.site-desktop-menu-2 > ul > li > ul {
 /* site-desktop-menu-3 */
 header.site-header-3 #logo {
   position: absolute;
-  top: 28px;
+  top: 18px;
   margin-top: 0px;
 }
 header.site-header-3 nav.site-desktop-menu {
@@ -4027,7 +4027,7 @@ footer.footer-2 .sub-footer {
     margin: 19px 0;
   }
   #logo {
-    margin-top: 16px;
+    margin-top: 10px;
   }
   .site-header-2.site-header .btn-mobile-menu {
     margin-bottom: 0px;
@@ -4053,7 +4053,7 @@ footer.footer-2 .sub-footer {
     display: none;
   }
   header.site-header-3 #logo {
-    top: 15px;
+    top: 2px;
   }
   .latest-projects .latest-projects-intro {
     padding: 15px 25px 9px;
