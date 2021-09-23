@@ -1,0 +1,112 @@
+﻿{extend name='base' /}
+{block name='main'}
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{$title}</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="/">首页</a></li>
+                    <b>/</b>
+                    <li class="active">{$title}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="blog-list">
+                    <!-- post begin -->
+                    {tp:list name="list"}
+                    <article>
+                        <div class="post-media">
+                            <img alt="" src="{$list.image|default='/template/business/index/images/news/1.jpg'}" class="img-responsive">
+                            <div class="post-date">
+                                <span class="date-day">{$list.create_time|date="d"}</span>
+                                <span class="date-month">{$list.create_time|date="m"}</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-title">
+                                <h5><a href="{$list.url}">{$list.title}</a></h5>
+                            </div>
+                            <div class="post-metadata">
+                                        <span class="byline">
+                                            <i class="fa fa-user"></i>
+                                            {$list.author|default='本站'}
+                                        </span>
+                                <span class="cat-links">
+                                            <i class="fa fa-external-link"></i>
+                                            {$list.source|default='网络'}
+                                        </span>
+                                <span class="comment-link">
+                                            <i class="fa fa-eye"></i>
+                                            {$list.hits}
+                                        </span>
+                            </div>
+                            <div class="post-entry">
+                                <p>{$list.summary}</p>
+                                <p><a class="btn btn-border" href="{$list.url}">查看详情</a></p>
+                            </div>
+                        </div>
+                    </article>
+                    {/tp:list}
+                    <!-- post close -->
+                </div>
+
+                <!-- pagination begin -->
+                <div class="pagination-ourter text-center">
+                    <ul class="pagination">
+                        {$page|raw}
+                    </ul>
+                </div>
+                <!-- pagination close -->
+            </div>
+            <div class="col-md-3">
+                <div class="main-sidebar">
+                    <aside class="widget widget_categories">
+                        <h3 class="widget-title">{$title}</h3>
+                        <div class="tiny-border"></div>
+                        <ul>
+                            {tp:nav name='nav' id="$cate['topid']"}
+                            <li class="cat-item"><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                            {/tp:nav}
+                        </ul>
+                    </aside>
+                    <aside class="widget widget_search">
+                        <form action="" class="search-form" method="get" role="search">
+                            <input type="search" name="s" value="" placeholder="Search …" class="search-field">
+                            <button class="search-submit" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </aside>
+                    <aside class="widget widget_archive">
+                        <h3 class="widget-title">热点资讯</h3>
+                        <div class="tiny-border"></div>
+                        <ul>
+                            {tp:list name="list" order="sort desc, hits desc" limit="10"}
+                            <li><a href="{$list.url}">{$list.title}</a></li>
+                            {/tp:list}
+                        </ul>
+                    </aside>
+                    <aside class="widget widget_tag_cloud">
+                        <h3 class="widget-title">标签</h3>
+                        <div class="tiny-border"></div>
+                        <div class="tagcloud">
+                            {tp:tagcloud name='list' table='article' limit='10' }
+                            <a href="{$list.url}">{$list.name}</a>
+                            {/tp:tagcloud}
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content close -->
+
+{/block}

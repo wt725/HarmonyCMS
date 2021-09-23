@@ -1,0 +1,92 @@
+﻿{extend name='base' /}
+{block name='main'}
+
+        <!-- content begin -->
+        <div id="content" class="no-padding">
+
+            <!-- section begin -->
+            <section id="about-intro">                
+                <div class="container">
+                    <div class="row">                                                
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="about-text-intro text-center">
+                                <h2>{$title}</h2>
+                                <p>{$info.title}</p>
+                            </div>
+                            <div class="box-intro-video">
+                                <div id="overlay-video" class="overlay-video-intro">
+                                    <img alt="" src="{tp:cate id=" $cate['topid']" type='image' /}" class="img-responsive" />
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>        
+            </section>
+            <!-- section close -->
+
+            <!-- section begin -->
+            <section id="section-about" class="margin-top-80">                
+                <div class="container">
+                    <div class="row">                        
+                        <div class="col-md-12">
+                            <h5>{$title}</h5>
+                            <p>{$info.content|raw}</p>
+                        </div>
+                    </div>
+                </div>        
+            </section>
+            <!-- section close -->
+
+            <!-- section begin -->
+            <section id="section-team" class="bg-grey">                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <h2>案例展示</h2>
+                                <div class="tiny-border"></div>
+                            </div>
+                        </div>
+
+                        {tp:list id="8" name="list" limit="12"}
+                        <div class="col-md-3">
+                            <div class="team-box">
+                                <div class="team-inner">
+                                    <img src="{$list.image}" alt="{$list.title}" class="img-circle">
+                                    <div class="mask"></div>
+                                    <!--<ul class="team-social-list">
+                                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>                                   
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>                                    
+                                    </ul>-->
+                                </div>                                
+                                <h6>{$list.title}</h6>
+                                <div class="subtext">{$list.description}</div>
+                            </div>                     
+                        </div>
+                        {/tp:list}
+                    </div>
+                </div>        
+            </section>
+            <!-- section close -->
+
+            <!-- section begin -->
+            <section id="section-cta">
+                <div class="sep-background-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="cal-to-action text-center">
+                                <span>我们已经为客户出色的完成了 <b>数百</b> 个项目，如果您有兴趣？</span>
+                                <a href="mailto:{$system.email}" class="btn btn-border-light">联系我们</a>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>        
+            </section>
+            <!-- section close -->
+            
+        </div>
+        <!-- content close -->
+
+{/block}

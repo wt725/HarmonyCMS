@@ -1,6 +1,15 @@
 <?php
 // 应用公共文件
 
+// 优化站点链接地址
+function urlOptimize($url)
+{
+    if (substr($url, 0, 4) != 'http') {
+        $url = 'http://' . $url;
+    }
+    return $url;
+}
+
 // 获取列表链接地址
 function getUrl($v)
 {
@@ -43,7 +52,7 @@ function getShowUrl($v)
             } else {
                 $moduleName = \app\common\model\Module::where('id', $cate['module_id'])
                     ->value('model_name');
-                $url        = (string)\think\facade\Route::buildUrl($moduleName . '/info', ['cate' => $cate['id'], 'id' => $v['id']])->domain('');
+                $url = (string)\think\facade\Route::buildUrl($moduleName . '/info', ['cate' => $cate['id'], 'id' => $v['id']])->domain('');
             }
         }
     }
@@ -90,11 +99,11 @@ function changefield($info, $moduleId)
             } elseif ($v['type'] == 'radio' || $v['type'] == 'checkbox') {
 
                 $info[$v['field'] . '_array'] = \app\common\facade\Cms::changeOptionsValue($options, $info[$v['field']], true);
-                $info[$v['field']]            = \app\common\facade\Cms::changeOptionsValue($options, $info[$v['field']], false);
+                $info[$v['field']] = \app\common\facade\Cms::changeOptionsValue($options, $info[$v['field']], false);
             } elseif ($v['type'] == 'select' || $v['type'] == 'select2') {
                 if ($v['field'] !== 'cate_id') {
                     $info[$v['field'] . '_array'] = \app\common\facade\Cms::changeOptionsValue($options, $info[$v['field']], true);
-                    $info[$v['field']]            = \app\common\facade\Cms::changeOptionsValue($options, $info[$v['field']], false);
+                    $info[$v['field']] = \app\common\facade\Cms::changeOptionsValue($options, $info[$v['field']], false);
                 }
             } elseif ($v['type'] == 'number') {
             } elseif ($v['type'] == 'hidden') {
@@ -107,7 +116,7 @@ function changefield($info, $moduleId)
                     foreach ($tags as $k => $tag) {
                         $tags[$k] = [
                             'name' => $tag,
-                            'url'  => \think\facade\Route::buildUrl('index/tag', ['module' => $moduleId, 't' => $tag])->__toString(),
+                            'url' => \think\facade\Route::buildUrl('index/tag', ['module' => $moduleId, 't' => $tag])->__toString(),
                         ];
                     }
                     $info[$v['field']] = $tags;
@@ -545,7 +554,7 @@ function getCateId()
  * @param array $list
  * @return array
  */
-function changeDict(array $list, string $field, string $all="全部")
+function changeDict(array $list, string $field, string $all = "全部")
 {
     $get = \think\facade\Request::except(['page'], 'get');
     foreach ($list as $k => $v) {
@@ -590,8 +599,8 @@ function changeDict(array $list, string $field, string $all="全部")
     $all = [
         'dict_label' => $all,
         'dict_value' => 0,
-        'url'        => $url,
-        'current'    => $hover ?? 0,
+        'url' => $url,
+        'current' => $hover ?? 0,
     ];
     array_unshift($list, $all);
 
@@ -645,19 +654,20 @@ function getSearchField(string $field)
  * 无限分类-权限
  * @param $cate            栏目
  * @param string $lefthtml 分隔符
- * @param int $pid         父ID
- * @param int $lvl         层级
+ * @param int $pid 父ID
+ * @param int $lvl 层级
  * @return array
  */
-function tree($cate , $lefthtml = '|— ' , $pid = 0 , $lvl = 0 ){
+function tree($cate, $lefthtml = '|— ', $pid = 0, $lvl = 0)
+{
     $arr = array();
-    foreach ($cate as $v){
+    foreach ($cate as $v) {
         if ($v['pid'] == $pid) {
-            $v['lvl']      = $lvl + 1;
-            $v['lefthtml'] = str_repeat($lefthtml,$lvl);
-            $v['ltitle']   = $v['lefthtml'].$v['title'];
+            $v['lvl'] = $lvl + 1;
+            $v['lefthtml'] = str_repeat($lefthtml, $lvl);
+            $v['ltitle'] = $v['lefthtml'] . $v['title'];
             $arr[] = $v;
-            $arr = array_merge($arr, tree($cate, $lefthtml, $v['id'], $lvl+1));
+            $arr = array_merge($arr, tree($cate, $lefthtml, $v['id'], $lvl + 1));
         }
     }
     return $arr;
@@ -667,20 +677,21 @@ function tree($cate , $lefthtml = '|— ' , $pid = 0 , $lvl = 0 ){
  * 无限分类-权限
  * @param $cate            栏目
  * @param string $lefthtml 分隔符
- * @param int $pid         父ID
- * @param int $lvl         层级
+ * @param int $pid 父ID
+ * @param int $lvl 层级
  * @return array
  */
-function tree_three($cate , $lefthtml = '|— ' , $pid = 0 , $lvl = 0 ){
+function tree_three($cate, $lefthtml = '|— ', $pid = 0, $lvl = 0)
+{
     $arr = array();
-    foreach ($cate as $v){
+    foreach ($cate as $v) {
         $keys = array_keys($v);
         if (end($v) == $pid) {
-            $v['lvl']      = $lvl + 1;
-            $v['lefthtml'] = str_repeat($lefthtml,$lvl);
+            $v['lvl'] = $lvl + 1;
+            $v['lefthtml'] = str_repeat($lefthtml, $lvl);
             $v[$keys[1]] = $v['lefthtml'] . $v[$keys[1]];
             $arr[] = $v;
-            $arr = array_merge($arr, tree_three($cate, $lefthtml, $v[$keys[0]], $lvl+1));
+            $arr = array_merge($arr, tree_three($cate, $lefthtml, $v[$keys[0]], $lvl + 1));
         }
     }
     return $arr;
@@ -714,9 +725,9 @@ function get_tagcloud($list, $moduleId, $limit = 10)
         $result = [];
         foreach ($arr as $k => $v) {
             $result[] = [
-                'name'  => $k,
+                'name' => $k,
                 'count' => $v,
-                'url'   => \think\facade\Route::buildUrl('index/tag', ['module' => $moduleId, 't' => $k])->__toString(),
+                'url' => \think\facade\Route::buildUrl('index/tag', ['module' => $moduleId, 't' => $k])->__toString(),
             ];
         }
     }
@@ -755,32 +766,32 @@ function get_back_url()
 function convert_moment_format_to_php(string $format = '')
 {
     $replacements = [
-        'DD'   => 'd',
-        'ddd'  => 'D',
-        'D'    => 'j',
+        'DD' => 'd',
+        'ddd' => 'D',
+        'D' => 'j',
         'dddd' => 'l',
-        'E'    => 'N',
-        'o'    => 'S',
-        'e'    => 'w',
-        'DDD'  => 'z',
-        'W'    => 'W',
+        'E' => 'N',
+        'o' => 'S',
+        'e' => 'w',
+        'DDD' => 'z',
+        'W' => 'W',
         'MMMM' => 'F',
-        'MM'   => 'm',
-        'MMM'  => 'M',
-        'M'    => 'n',
+        'MM' => 'm',
+        'MMM' => 'M',
+        'M' => 'n',
         'YYYY' => 'Y',
-        'YY'   => 'y',
-        'a'    => 'a',
-        'A'    => 'A',
-        'h'    => 'g',
-        'H'    => 'G',
-        'hh'   => 'h',
-        'HH'   => 'H',
-        'mm'   => 'i',
-        'ss'   => 's',
-        'SSS'  => 'u',
-        'zz'   => 'e',
-        'X'    => 'U',
+        'YY' => 'y',
+        'a' => 'a',
+        'A' => 'A',
+        'h' => 'g',
+        'H' => 'G',
+        'hh' => 'h',
+        'HH' => 'H',
+        'mm' => 'i',
+        'ss' => 's',
+        'SSS' => 'u',
+        'zz' => 'e',
+        'X' => 'U',
     ];
     $phpFormat = strtr($format, $replacements);
     return $phpFormat;

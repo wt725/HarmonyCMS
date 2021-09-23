@@ -37,7 +37,5 @@ HarmonyCMS V1.0 内容管理系统
 
 ## 版权信息
 
-> 请尊重HarmonyCMS开发者的劳动成果，HarmonyCMS提供免费使用，但未授权前请保留前台 Powered by HarmonyCMS ，并不得修改后台版权信息。
-
 > 版权所有Copyright © 2019-2021 by HarmonyCMS (http://HarmonyCMS.ok5168.com)
 All rights reserved。

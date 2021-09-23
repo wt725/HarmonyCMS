@@ -1,0 +1,161 @@
+{extend name='base' /}
+{block name='main'}
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{$title}</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="/">首页</a></li>
+                    <b>/</b>
+                    <li class="active">{$title}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content" class="no-padding">
+
+    <!-- section gmap begin -->
+    <section id="section-gmap" class="no-padding">
+        <div class="container">
+            <div id="map-canvas" class="map-canvas"></div>
+        </div>
+    </section>
+    <!-- section gmap close -->
+
+    <!-- section begin -->
+    <section id="section-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="text-left">
+                        <h4>给我留言</h4>
+                        <p>欢迎给我们留言，我们的工作人员会及时与您联系</p>
+                    </div>
+                    <form action="{:url('index/add')}" method="post" class="wpcf7-form">
+                        <div class="col-one-third">
+                            <input type="text" name="title" placeholder="标题">
+                        </div>
+                        <div class="col-one-third margin-one-third">
+                            <input type="text" name="name" placeholder="姓名">
+                        </div>
+                        <div class="col-one-third">
+                            <input type="text" name="phone" placeholder="电话">
+                        </div>
+                        <div class="col-full"><textarea name="content" placeholder="留言"></textarea></div>
+                        <div class="clearfix"></div>
+                        <div class="text-center">
+                            <div class="divider-single"></div>
+                            <input type="hidden" name="cate_id" value="13">
+                            <input type="submit" class="btn btn-primary btn-big" value="提交">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <h4>联系信息</h4>
+                    <ul class="contact-list">
+                        <li><i class="fa fa-location-arrow"></i> {$system.address}</li>
+                        <li><i class="fa fa-phone"></i> {$system.tel}</li>
+                        <li><i class="fa fa-envelope"></i> <a href="mailto:{$system.email}">{$system.email}</a></li>
+                        <li><i class="fa fa-globe"></i> <a href="{$system.url|urlOptimize=###}" target="_blank">{$system.url}</a></li>
+                    </ul>
+                    <h4>工作时间</h4>
+                    <p>我们的支持热线全天 24 小时可用</p>
+                    <ul class="contact-list">
+                        <li><i class="fa fa-clock-o"></i> 周一至周五：上午 8 点至下午 6 点</li>
+                        <li><i class="fa fa-clock-o"></i> 星期六：上午 10 点至下午 2 点</li>
+                        <li><i class="fa fa-times-circle"></i> 星期日：休息</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+</div>
+<!-- content close -->
+{/block}
+
+{block name='js'}
+<script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.min.js"></script>
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=6LLBZ-QMLCX-HNA4L-T3ADN-4O3V5-BFFLB"></script>
+<script>
+    var latnow, lngnow, center, map, markersArray = [];
+    latnow = 36.661633;
+    lngnow = 117.000977;
+    $("#lng").val(lngnow);
+    $("#lat").val(latnow);
+
+    if (latnow == 'undefined' || latnow == null || latnow == '' || latnow == 0) {
+        if (window.navigator.geolocation) {
+            window.navigator.geolocation.getCurrentPosition(handleSuccess);
+        }
+    } else {
+        center = new qq.maps.LatLng(latnow, lngnow);
+        init();
+    }
+    function init() {
+        map = new qq.maps.Map(document.getElementById('map-canvas'),{
+            center: center,
+            zoom: 18
+        });
+        var marker = new qq.maps.Marker({
+            position: center,
+            map: map
+        });
+        markersArray.push(marker);
+        qq.maps.event.addListener(map, 'click', function(event) {
+            lngnow = event.latLng.getLng().toFixed(6);
+            latnow = event.latLng.getLat().toFixed(6);
+            $("#lng").val(lngnow);
+            $("#lat").val(latnow);
+            latLng = new qq.maps.LatLng(latnow, lngnow);
+            map.panTo(latLng);
+            geocoder.getAddress(latLng);
+            deleteOverlays();
+            addMarker(event.latLng);
+        });
+        geocoder = new qq.maps.Geocoder({
+            complete : function(result){
+                $("#address").html(result.detail.address);
+            }
+        });
+        geocoder.getAddress(center);
+    }
+    function handleSuccess(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        //转换GPS坐标为腾讯坐标
+        qq.maps.convertor.translate(new qq.maps.LatLng(lat,lng), 1, function(res){
+            center = res[0];
+            $("#latlng").append('GPS 坐标信息：<br>经度（lng）：' + lng + '<br>纬度（lat）：' + lat + '<br><br>腾讯地图 坐标信息：');
+            lat = center.getLat().toFixed(6);
+            lng = center.getLng().toFixed(6);
+            $('#lat').val(lat);
+            $('#lng').val(lng);
+            latnow = lat;
+            lngnow = lng;
+            init();
+            $("#latlng").append('<br>经度（lng）：' + lng + '<br>纬度（lat）：' + lat);
+        });
+    }
+    function addMarker(location) {
+        var marker = new qq.maps.Marker({
+            position: location,
+            map: map
+        });
+        markersArray.push(marker);
+    }
+    function deleteOverlays() {
+        if (markersArray) {
+            for (i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+    }
+</script>
+{/block}

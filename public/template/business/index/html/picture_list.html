@@ -1,0 +1,90 @@
+﻿{extend name='base' /}
+{block name='main'}
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{$title}</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="/">首页</a></li>
+                    <b>/</b>
+                    <li class="active">{$title}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- content begin -->
+        <div id="content" class="no-padding">
+
+            <!-- section begin -->
+            <section id="section-project">
+                <div class="container">
+                    <div class="row">                           
+                        <div id="portfolio-filter" class="project-grid-2">
+                            <ul id="filter">
+                                <li><a href="#" class="current" data-filter="*" title="">全部</a></li>
+                                {tp:nav name='v' id="$cate['topid']"}
+                                <li><a href="#" data-filter=".{$v.id}" title="">{$v.cate_name}</a></li>
+                                {/tp:nav}
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div id="projects-grid" class="projects-boxes">
+                            {tp:list name='list'}
+                            <div class="project-item col-md-4 col-sm-6 {$list.cate_id}">
+                                <div class="project-item-inner">
+                                    <img src="{$list.image}" alt="" class="img-responsive">
+                                    <div class="project-details">
+                                        <p class="folio-title"><a href="#">{$list.title}</a></p>
+                                        {if $list.tags}
+                                        <p class="folio-cate">
+                                            <i class="fa fa-tag"></i>
+                                                {foreach $list.tags as $key=>$vo }
+                                                <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                                                {/foreach}
+                                        </p>
+                                        {/if}
+                                        <div class="folio-buttons">
+                                            <a href="{$list.image}" title="{$list.title}" class="folio"><i class="fa fa-search"></i></a>
+                                            <a href="{$list.url}"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/tp:list}
+                        </div>
+                        <!-- pagination begin -->
+                        <div class="pagination-ourter text-center">
+                            <ul class="pagination">
+                                {$page|raw}
+                            </ul>
+                        </div>
+                        <!-- pagination close -->
+                    </div>
+                </div>        
+            </section>
+            <!-- section close --> 
+
+            <!-- section begin -->
+            <section id="section-cta">
+                <div class="sep-background-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="cal-to-action text-center">
+                                <span>我们已经为客户出色的完成了 <b>数百</b> 个项目，如果您有兴趣？</span>
+                                <a href="mailto:{$system.email}" class="btn btn-border-light">联系我们</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- section close -->
+            
+        </div>
+        <!-- content close -->
+       
+{/block}
