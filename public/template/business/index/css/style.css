@@ -314,7 +314,7 @@ header.site-header-3 .stuck .header-buttons {
 header.site-header-3 .stuck #logo {
   position: static;
   top: inherit;
-  margin-top: 15px;
+  margin-top: 0;
   float: left;
 }
 header.site-header-3 .stuck nav.site-desktop-menu {

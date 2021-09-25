@@ -86,7 +86,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <img src="{$public}images/about/we-are-thumb-1.jpg" alt="about image" class="img-responsive">
+                    <div class="project-slider">
+                        {tp:ad name='ad' id='3'}
+                        <div class="item"><img src="{$ad.image}" alt="{$ad.title}" class="img-responsive"></div>
+                        {/tp:ad}
+                    </div>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="about-box">
@@ -289,3 +293,30 @@
     </section>
     <!-- section close -->
     {/block}
+
+
+{block name='js'}
+<script type="text/javascript">
+    /* Portfolio Sorting */
+    jQuery(document).ready(function($){
+        $(".project-slider").owlCarousel({
+            singleItem: true,
+            lazyLoad: true,
+            navigation: false,
+            autoPlay : true,
+            slideSpeed : 400,
+        });
+        $("#related-projects").owlCarousel({
+            items: 4,
+            itemsCustom : false,
+            itemsDesktop : [1199, 3],
+            itemsDesktopSmall : [979, 2],
+            itemsTablet : [768, 2],
+            itemsTabletSmall : false,
+            itemsMobile : [479, 1],
+            navigation: false,
+            pagination: false,
+        });
+    } )(jQuery);
+</script>
+{/block}
