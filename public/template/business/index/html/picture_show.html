@@ -1,0 +1,150 @@
+{extend name='base' /}
+{block name='main'}
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{$title}</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="/">首页</a></li>
+                    <b>/</b>
+                    <li class="active">{$title}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content" class="no-padding">
+    <!-- Share begin -->
+    <div class="container">
+        <div class="social-share clearfix padding-top-bottom-50">
+            <a href="#" ><i class="fa fa-facebook"></i></a>
+            <a href="#" ><i class="fa fa-twitter"></i></a>
+            <a href="#" ><i class="fa fa-google-plus"></i></a>
+            <a href="#" ><i class="fa fa-linkedin"></i></a>
+        </div>
+    </div>
+    <!-- Share close -->
+
+    <!-- section begin -->
+    <section id="section-project" class="no-padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="project-slider">
+                        {if $info.images}
+                        {foreach $info.images as $key=>$vo}
+                        <div class="item"><img src="{$vo.image}" alt="{$vo.title}"></div>
+                        {/foreach}
+                        {else /}
+                        <div class="item"><img src="/template/business/index/images/projects/slides/project-slider-1.jpg" alt="{$info.title}"></div>
+                        {/if}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="project-info">
+                        <h2 class="box-title">{$info.title}</h2>
+                        <p>{$info.content|raw}</p>
+                        <ul class="project-list">
+                            <li><strong>来源:</strong> {$info.source}</li>
+                            {if $info.keywords}
+                            <li><strong>关键词:</strong> {$info.keywords}</li>
+                            {/if}
+                            {if $info.tags}
+                            <li>
+                                <strong>标签</strong>
+                                {foreach $info.tags as $key=>$vo }
+                                <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                                {/foreach}
+                            </li>
+                            {/if}
+                            <li><strong>日期:</strong> {$info.create_time|date="Y-m-d"}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Project begin -->
+    <section id="section-related-project" class="no-padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-projects-2 clearfix">
+                        <div class="latest-projects-wrapper">
+                            <div class="text-center">
+                                <h2 class="box-title">相关热点</h2>
+                                <div class="tiny-border"></div>
+                            </div>
+                            <div id="related-projects" class="latest-projects-items">
+
+                                {tp:list order="hits DESC" name="vo" limit="4"}
+                                <div class="item">
+                                    <img src="{$vo.image}" alt="{$vo.title}" class="img-responsive">
+                                    <div class="project-details">
+                                        <p class="folio-title"><a href="{$vo.url}">{$vo.title}</a></p>
+                                        {if $vo.tags}
+                                        <p class="folio-cate">
+                                            <i class="fa fa-tag"></i>
+                                            {foreach $vo.tags as $key=>$v }
+                                            <a href="{$v.url}" target="_blank">{$v.name}</a>
+                                            {/foreach}
+                                        </p>
+                                        {/if}
+                                        <div class="folio-buttons">
+                                            <a href="{$vo.image}" title="{$vo.title}" class="folio"><i class="fa fa-search"></i></a>
+                                            <a href="{$vo.url}"><i class="fa fa-link"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/tp:list}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Project close -->
+
+</div>
+<!-- content close -->
+
+{/block}
+
+{block name='js'}
+<script type="text/javascript">
+    /* Portfolio Sorting */
+    jQuery(document).ready(function($){
+        $(".project-slider").owlCarousel({
+            singleItem: true,
+            lazyLoad: true,
+            navigation: true,
+            autoPlay : true,
+            navigationText: [
+                "<i class='fa fa-chevron-left'></i>",
+                "<i class='fa fa-chevron-right'></i>"
+            ],
+            slideSpeed : 400,
+        });
+        $("#related-projects").owlCarousel({
+            items: 4,
+            itemsCustom : false,
+            itemsDesktop : [1199, 3],
+            itemsDesktopSmall : [979, 2],
+            itemsTablet : [768, 2],
+            itemsTabletSmall : false,
+            itemsMobile : [479, 1],
+            navigation: true,
+            pagination: false,
+            navigationText: [
+                "<i class='fa fa-angle-left'></i>",
+                "<i class='fa fa-angle-right'></i>"
+            ],
+        });
+    } )(jQuery);
+</script>
+{/block}

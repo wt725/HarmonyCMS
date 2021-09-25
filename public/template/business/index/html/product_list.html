@@ -1,0 +1,94 @@
+﻿{extend name='base' /}
+{block name='main'}
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{$title}</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="/">首页</a></li>
+                    <b>/</b>
+                    <li class="active">{$title}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- content begin -->
+        <div id="content" class="padding-bottom-0">
+
+           <section class="main-shop">
+               <div class="container">
+                   <div class="row">
+                        <div class="col-md-3">
+                            <div class="main-sidebar">                                
+                                <aside class="widget widget_search">
+                                    <form action="" class="search-form" method="get" role="search">
+                                        <input type="search" name="s" value="" placeholder="搜索 …" class="search-field">
+                                        <button class="search-submit" type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </aside>
+                                <aside class="widget widget_categories">
+                                    <h3 class="widget-title">类别</h3>
+                                    <div class="tiny-border"></div>    
+                                    <ul>
+                                        {tp:nav name='nav' id="$cate['topid']"}
+                                        <li class="cat-item"><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                                        {/tp:nav}
+                                    </ul>
+                                </aside>
+                                <aside class="widget woocommerce widget_products">
+                                    <h3 class="widget-title">推荐</h3>
+                                    <div class="tiny-border"></div>
+                                    <ul class="product_list_widget">
+                                        {tp:list name="list" order="sort desc, hits desc" limit="5"}
+                                        <li>
+                                            <img src="{$list.image}">
+                                            <a title="{$list.title}" href="{$list.url}">
+                                                <span class="product-title">{$list.title}</span>
+                                            </a>
+                                        </li>
+                                        {/tp:list}
+                                    </ul>
+                                </aside>
+                            </div>                        
+                        </div>
+                        <div class="col-md-9">
+                            <div class="products row">
+
+                                {tp:list name="list"}
+                                <div class="product-item col-md-4">
+                                    <figure>
+                                        <img alt="product name" src="{$list.image}">
+                                    </figure>
+                                    <div class="product-detail text-center">
+                                        <h4><a href="{$list.url}">{$list.title}</a></h4>
+                                    </div>
+                                </div>
+                                {/tp:list}
+
+                            </div>
+                            <!-- pagination begin -->
+                            <div class="pagination-ourter text-center">
+                                <ul class="pagination">
+                                    {$page|raw}
+                                </ul>
+                            </div>
+                            <!-- pagination close -->
+                        </div>
+                   </div>
+               </div>
+           </section> 
+
+        </div>
+        <!-- content close -->
+{/block}
+{block name='js'}
+<script src="{$public}js/smk-accordion.js"></script>
+<script src="{$public}js/tabs.js"></script>
+<script type="text/javascript" src="{$public}js/visible.min.js"></script>
+<script type="text/javascript" src="{$public}js/pro-bars.js"></script>
+<script src="{$public}js/custom-element.js"></script>
+
+{/block}

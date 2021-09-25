@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$system.title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{$system.des}">
+    <meta name="keyword" content="{$system.key}">
+    <meta name="author" content="哈曼云">
+    <!-- Favicons
+    ================================================== -->
+    <link rel="icon" href="{$public}images/favicon.png" type="image/x-icon">
+    <!-- LOAD CSS FILES -->
+    <link href="{$public}css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- color scheme -->
+    <link rel="stylesheet" href="{$public}switcher/demo.css" type="text/css">
+    <link rel="stylesheet" href="{$public}switcher/colors/blue.css" type="text/css" id="colors">
+</head>
+
+<body>
+<!-- Preload images start //-->
+<div class="images-preloader" id="images-preloader">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+<!-- Preload images end //-->
+
+<div id="wrapper">
+
+    <!-- header begin -->
+    <header class="site-header-3 site-header">
+        <!-- Main bar start -->
+        <div id="sticked-menu" class="main-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- logo begin -->
+                        <div id="logo" class="site-logo">
+                            <a href="index.html">
+                                <img src="{$public}images/logo.png" alt="" class="logo">
+                            </a>
+                        </div>
+                        <!-- logo close -->
+
+                        <!-- Header Group Button Right begin -->
+                        <div class="header-buttons pull-right hidden-xs hidden-sm">
+
+                            <!-- Button Modal popup searchbox -->
+                            <div class="search-button">
+                                <!-- Trigger the modal with a button -->
+                                <a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i></a>
+                            </div>
+
+                            <div class="header-contact">
+                                <ul class="clearfix">
+                                    <li class="contact"><i class="fa fa-envelope"></i> <span>{$system.email}</span></li>
+                                    <li class="phone"><i class="fa fa-phone"></i> <span>{$system.tel}</span></li>
+                                    <li class="border-line">|</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Header Group Button Right close -->
+
+                        <!-- desktop menu begin -->
+                        <nav id="desktop-menu" class="site-desktop-menu site-desktop-menu-3 hidden-xs hidden-sm">
+                            <ul id="clearfix">
+                                <li {if empty($cate[
+                                'topid'])}class="active"{/if}><a href="/">首 页</a></li>
+                                {tp:nav name='nav' limit='10'}
+                                <li {if $nav[
+                                'id'] == $cate['topid']}class="active"{/if}><a data-id="nav_key_{$key}"
+                                                                               href="{$nav.url}">{$nav.cate_name}</a>
+                                {if $nav.sub}
+                                <ul>
+                                    {volist name="$nav.sub" id="v"}
+                                    <li><a data-id="nav_sub_key_{$key}" href="{$v.url}">{$v.cate_name}</a></li>
+                                    {/volist}
+                                </ul>
+                                {/if}
+                                </li>
+                                {/tp:nav}
+                            </ul>
+                        </nav>
+                        <!-- desktop menu close -->
+
+                        <!-- btn-mobile menu begin -->
+                        <a id="show-mobile-menu" class="btn-mobile-menu hidden-lg hidden-md"><i class="fa fa-bars"></i></a>
+                        <!-- btn-mobile menu close -->
+
+                        <!-- mobile menu begin -->
+                        <nav id="mobile-menu" class="site-mobile-menu hidden-lg hidden-md">
+                            <ul></ul>
+                        </nav>
+                        <!-- mobile menu close -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header close -->
+    <div class="gray-line3"></div>
+
+    <!-- Modal Search begin -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-dialog myModal-search">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form role="search" method="get" class="search-form" action="">
+                        <input type="search" class="search-field" placeholder="搜索..." value="" title=""/>
+                        <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Search close -->
+
+    <!-- Menu OffCanvas right begin -->
+    <div class="navright-button hidden-sm">
+        <div class="compact-menu-canvas" id="offcanvas-menu">
+            <h3>menu</h3><a id="btn-close-canvasmenu"><i class="fa fa-close"></i></a>
+            <nav>
+                <ul class="clearfix">
+                    <li><a href="/">首页</a></li>
+                    {tp:nav name='nav' limit='10'}
+                    <li><a href="{$nav.url}">{$nav.cate_name}</a></li>
+                    {/tp:nav}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- Menu OffCanvas right close -->
+
+    {block name='main'}{/block}
+
+    <!-- section begin -->
+    <section id="section-partner" class="bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2 class="inline">合作伙伴</h2>
+                    <div class="compact-buttons">
+                        <div class="partner-prev compact-prev"><i class="fa fa-angle-left"></i></div>
+                        <div class="partner-next compact-next"><i class="fa fa-angle-right"></i></div>
+                    </div>
+                    <div class="tiny-border"></div>
+
+                    <div id="client-logo" class="our-partner">
+                        {tp:list id="15" name="list"}
+                        <div class="item"><img src="{$list.image}" alt="{$list.title}"></div>
+                        {/tp:list}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+</div>
+<!-- content close -->
+
+<!-- footer begin -->
+<footer class="footer-1 bg-color-1">
+
+    <!-- main footer begin -->
+    <div class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="compact-widget">
+                        <div class="widget-inner">
+                            <img class="logo-footer" src="{$public}images/logo-footer.png" alt="compact company">
+                            <p>{$system.des}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="compact-widget">
+                        <h3 class="widget-title">快速导航</h3>
+                        <div class="widget-inner">
+                            <ul>
+                                {tp:nav name='nav' limit='10'}
+                                <li><a href="{$nav.url}">{$nav.cate_name}</a></li>
+                                {/tp:nav}
+                                <li><a href="#">站点地图</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="compact-widget">
+                        <h3 class="widget-title">联系我们</h3>
+                        <div class="widget-inner">
+                            <p>地址：{$system.address}</p>
+                            <p>电话：{$system.tel}</p>
+                            <p>传真：{$system.fax}</p>
+                            <p>邮件：{$system.email}</p>
+                            <p>网址：{$system.url}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="compact-widget">
+                        <h3 class="widget-title">关注我们</h3>
+                        <div class="widget-inner">
+                            <img src="{$public}images/qrcode_qq.jpg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- main footer close -->
+
+    <!-- sub footer begin -->
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    {$system.copyright} {$system.icp}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sub footer close -->
+
+</footer>
+<!-- footer close -->
+
+<a id="to-the-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- LOAD JS FILES -->
+<script src="{$public}js/jquery.min.js"></script>
+<script src="{$public}js/bootstrap.min.js"></script>
+<script src="{$public}js/imagesloaded.pkgd.min.js"></script>
+<script src="{$public}js/easing.js"></script>
+<script src="{$public}js/owl.carousel.js"></script>
+<script src="{$public}js/jquery.fitvids.js"></script>
+<script src="{$public}js/wow.min.js"></script>
+<script src="{$public}js/jquery.magnific-popup.min.js"></script>
+
+<!-- Project Grid -->
+<script type="text/javascript" src="{$public}js/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="{$public}js/masonry.js"></script>
+<script type="text/javascript" src="{$public}js/jquery.isotope.min.js"></script>
+
+<!-- Waypoints -->
+<script src="{$public}js/jquery.waypoints.min.js"></script>
+<script src="{$public}js/sticky.min.js"></script>
+<script src="{$public}js/compact.js"></script>
+<script src="{$public}js/custom-index3.js"></script>
+
+<!-- SLIDER REVOLUTION SCRIPTS  -->
+<script type="text/javascript" src="{$public}rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="{$public}rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="{$public}js/revslider-custom.js"></script>
+{block name='js'}{/block}
+</body>
+</html>

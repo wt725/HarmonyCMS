@@ -1,0 +1,175 @@
+{extend name='base' /}
+
+{block name='main'}
+
+<!-- ==========Blog Details Section Starts Here========== -->
+    <div class="blog-details padding-top padding-bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mb-50-md-70 mb-lg-0">
+                    <div class="post-item post-details">
+                        <div class="post-thumb">
+                            <img src="{$info.image|default='/template/ccpitsd/index/img/blog/blog5.jpg'}" alt="{$info.title}">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> {$info.create_time|date="Y-m-d"}
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h4 class="title">{$info.title}</h4>
+
+                            {$info.content|raw}
+
+                            <div class="author-area">
+                                <div class="author">
+                                    <span>作者：{$info.author} 阅读量：{$info.hits} </span>
+                                </div>
+                                <ul class="share">
+                                    {if $info.tags}
+                                    {foreach $info.tags as $key=>$vo }
+                                    <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                                    {/foreach}
+                                    {/if}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="comment-area">
+                        <h3 class="title">03 Comment</h3>
+                        <ul class="comment-wrapper">
+                            <li>
+                                <div class="comment-item d-flex flex-wrap">
+                                    <div class="comment-thumb">
+                                        <a href="#0">
+                                            <img src="../img/blog/blog-comment01.jpg" alt="blog">
+                                        </a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-header align-items-center d-flex flex-wrap justify-content-between">
+                                            <div class="comment-header-left ">
+                                                <h6 class="sub-title"><a href="#0">David James</a></h6>
+                                                <span>1 hour ago</span>
+                                            </div>
+                                            <a href="#0" class="reply-button">Reply</a>
+                                        </div>
+                                        <p>Gravida curabitur vel aut vulputate sit semper, gravida exercitationem cras sem inger donec justo dictum et risus massa eros</p>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="comment-item d-flex flex-wrap">
+                                            <div class="comment-thumb">
+                                                <a href="#0">
+                                                    <img src="../img/blog/blog-comment02.jpg" alt="blog">
+                                                </a>
+                                            </div>
+                                            <div class="comment-content">
+                                                <div class="comment-header align-items-center d-flex flex-wrap justify-content-between">
+                                                    <div class="comment-header-left ">
+                                                        <h6 class="sub-title"><a href="#0">Robita Folen </a></h6>
+                                                        <span>1 hour ago</span>
+                                                    </div>
+                                                    <a href="#0" class="reply-button">Reply</a>
+                                                </div>
+                                                <p>Gravida curabitur vel aut vulputate sit semper, gravida exercitationem cras sem inger donec justo dictum et risus massa eros</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="comment-item d-flex flex-wrap">
+                                    <div class="comment-thumb">
+                                        <a href="#0">
+                                            <img src="../img/blog/blog-comment03.jpg" alt="blog">
+                                        </a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-header align-items-center d-flex flex-wrap justify-content-between">
+                                            <div class="comment-header-left ">
+                                                <h6 class="sub-title"><a href="#0">Natallia Moe</a></h6>
+                                                <span>1 hour ago</span>
+                                            </div>
+                                            <a href="#0" class="reply-button">Reply</a>
+                                        </div>
+                                        <p>Gravida curabitur vel aut vulputate sit semper, gravida exercitationem cras sem inger donec justo dictum et risus massa eros</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="comment-area mb-0">
+                        <h3 class="title">add your comment</h3>
+                        <form class="comment-form d-flex flex-wrap">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="Your Email">
+                            </div>
+                            <div class="form-group w-100">
+                                <textarea name="message" placeholder="Write a Comment"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Add Comment">
+                            </div>
+                        </form>
+                    </div>
+                    -->
+
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <!--<div class="widget widget-search">
+                        <form class="search-form">
+                            <input type="text" placeholder="Search Keywords">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>-->
+                    <div class="widget widget-tags">
+                        <ul>
+                            {tp:nav name='nav' id="$cate['topid']"}
+                            <li><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                            {/tp:nav}
+                        </ul>
+                    </div>
+                    <div class="widget widget-posts">
+                        <ul>
+                            {tp:list name="list" order="sort desc, hits desc" limit="10"}
+                            <li>
+                                <div class="w-post-thumb">
+                                    <a href="#0"><img src="{$list.image}" alt="{$list.title}"></a>
+                                </div>
+                                <div class="w-post-content">
+                                    <h6 class="subtitle"><a href="{$list.url}">{$list.title}</a></h6>
+                                    <span>{$list.create_time|date="Y-m-d"}</span>
+                                </div>
+                            </li>
+                            {/tp:list}
+                        </ul>
+                    </div>
+                    <!--
+                        <div class="widget widget-download">
+                            <ul>
+                                <li>
+                                    <a href="#0" class="active"><i class="far fa-file-powerpoint"></i>Presentation.pdf</a>
+                                </li>
+                                <li>
+                                    <a href="#0"><i class="fas fa-file-alt"></i>Condimentum.Doc</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="widget widget-subscribe">
+                            <h5 class="title">Subscribe Us</h5>
+                            <form class="subscribe-form">
+                                <input type="text" placeholder="Search Keywords">
+                                <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                            </form>
+                        </div>
+                      -->
+            </div>
+        </div>
+    </div>
+    <!-- ==========Blog Details Section Ends Here========== -->
+
+    {/block}

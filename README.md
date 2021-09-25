@@ -1,13 +1,13 @@
-HarmonyCMS V0.9 内容管理系统
+HarmonyCMS V1.0 内容管理系统
 ===============
 
-> 运行环境要求PHP7.1+。
+> 运行环境要求PHP7.3+。
 
 > HarmonyCMS 运行目录: public/
 
 ## 在线手册
 
-（暂无）
+暂无
 
 ## 安装
 
@@ -36,8 +36,6 @@ HarmonyCMS V0.9 内容管理系统
 >![Image text](https://ok5168.com/static/image/HarmonyCMS_QQ.jpg)
 
 ## 版权信息
-
-> 请尊重HarmonyCMS开发者的劳动成果，HarmonyCMS提供免费使用，但未授权前请保留前台 Powered by HarmonyCMS ，并不得修改后台版权信息。
 
 > 版权所有Copyright © 2019-2021 by HarmonyCMS (http://HarmonyCMS.ok5168.com)
 All rights reserved。

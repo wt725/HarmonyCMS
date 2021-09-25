@@ -90,19 +90,19 @@ class Admin extends Base
         if ($open_code) {
             $code = Request::param("vercode");
             if (!captcha_check($code)) {
-                $data = ['error' => '1', 'msg' => '验证码错误'];
+                $data = ['error' => 1, 'msg' => '验证码错误'];
                 return json($data);
             }
         }
         $result = self::where(['username' => $username, 'password' => md5($password)])->find();
 
         if (empty($result)) {
-            $data = ['error' => '1', 'msg' => '帐号或密码错误'];
+            $data = ['error' => 1, 'msg' => '帐号或密码错误'];
             return json($data);
         } else {
             $check = Request::checkToken('__token__');
             if (false === $check) {
-                $data = ['error' => '2', 'msg' => '验证有误'];
+                $data = ['error' => 2, 'msg' => '验证有误'];
                 return json($data);
             }
             if ($result['status'] == 1) {
@@ -152,7 +152,7 @@ class Admin extends Base
                 // 触发登录成功事件
                 Event::trigger('AdminLogin', $result);
 
-                $data = ['error' => '0', 'href' => url('Index/index')->__toString(), 'msg' => '登录成功'];
+                $data = ['error' => 0, 'href' => url('Index/index')->__toString(), 'msg' => '登录成功'];
                 return json($data);
             } else {
                 return json(['error' => 1, 'msg' => '用户已被禁用!']);

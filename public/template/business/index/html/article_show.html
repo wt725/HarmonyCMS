@@ -1,0 +1,145 @@
+﻿{extend name='base' /}
+{block name='main'}
+        <section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{$title}</h1>
+                        <ul class="breadcrumbs">
+                            <li><a href="/">首页</a></li>
+                            <b>/</b>
+                            <li class="active">{$title}</li>
+                        </ul>            
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- content begin -->
+        <div id="content">
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-md-9">
+                        <div class="blog-single">
+                            <!-- post begin -->
+                            <article>
+                                <div class="post-media">
+                                    {if $info.image}
+                                    <img src="{$info.image}" class="img-responsive">
+                                    {/if}
+                                    {if $info.images}
+                                    {foreach $info.images as $key=>$vo}
+                                    <img src="{$vo.image}" alt="{$vo.title}" class="img-responsive">
+                                    {/foreach}
+                                    {/if}
+                                </div>
+                                <div class="post-content">
+                                    <div class="post-title">
+                                        <h1>{$info.title}</h1>
+                                    </div>
+                                    <div class="post-metadata">                                        
+                                        <span class="posted-on">
+                                            <i class="fa fa-clock-o"></i>
+                                            {$info.create_time|date="Y-m-d H:i:s"}
+                                        </span>
+                                        <span class="byline">
+                                            <i class="fa fa-user"></i>
+                                            {$info.author|default='本站'}
+                                        </span>
+                                        <span class="cat-links">
+                                            <i class="fa fa-external-link"></i>
+                                            {$info.source|default='网络'}
+                                        </span>
+                                        <span class="comment-link">
+                                            <i class="fa fa-eye"></i>
+                                            {$info.hits}
+                                        </span>
+                                    </div>
+                                    <div class="hr"></div>
+                                    <div class="post-entry">
+                                        {$info.content|raw}
+                                    </div>
+                                    <div class="footer-entry clearfix">
+                                        {if $info.tags}
+                                        <div class="single-tags pull-left">
+                                            <i class="fa fa-tags"></i>
+                                            {foreach $info.tags as $key=>$vo }
+                                            <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+                                            {/foreach}
+                                        </div>
+                                        {/if}
+                                        {if $info.keywords}
+                                        <div class="single-tags pull-right">
+                                            <i class="fa fa-bookmark"></i>
+                                            {$info.keywords}
+                                        </div>
+                                        {/if}
+                                    </div>
+                                    <nav class="navigation post-navigation">                                        
+                                        <div class="nav-links">
+                                            <div class="nav-previous">
+                                                <a href="#">
+                                                    <span class="meta-nav"><i class="fa fa-angle-double-left"></i> 上一篇</span>
+                                                    <span class="post-title">{tp:prev len=''/}</span>
+                                                </a>
+                                            </div>
+                                            <div class="nav-next">
+                                                <a href="#">
+                                                    <span class="meta-nav">下一篇 <i class="fa fa-angle-double-right"></i></span>
+                                                    <span class="post-title">{tp:next len=''/}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <div class="clearfix"></div>
+
+                                </div>
+                            </article>
+                            <!-- post close -->
+                        </div>
+
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <div class="main-sidebar">
+                            <aside class="widget widget_categories">
+                                <h3 class="widget-title">{$title}</h3>
+                                <div class="tiny-border"></div>
+                                <ul>
+                                    {tp:nav name='nav' id="$cate['topid']"}
+                                    <li class="cat-item"><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                                    {/tp:nav}
+                                </ul>
+                            </aside>
+                            <aside class="widget widget_search">
+                                <form action="" class="search-form" method="get" role="search">
+                                    <input type="search" name="s" value="" placeholder="Search …" class="search-field">
+                                    <button class="search-submit" type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </aside>
+                            <aside class="widget widget_archive">
+                                <h3 class="widget-title">热点资讯</h3>
+                                <div class="tiny-border"></div>
+                                <ul>
+                                    {tp:list name="list" order="sort desc, hits desc" limit="10"}
+                                    <li><a href="{$list.url}">{$list.title}</a></li>
+                                    {/tp:list}
+                                </ul>
+                            </aside>
+                            <aside class="widget widget_tag_cloud">
+                                <h3 class="widget-title">标签</h3>
+                                <div class="tiny-border"></div>
+                                <div class="tagcloud">
+                                    {tp:tagcloud name='list' table='article' limit='10' }
+                                    <a href="{$list.url}">{$list.name}</a>
+                                    {/tp:tagcloud}
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- content close -->
+
+{/block}

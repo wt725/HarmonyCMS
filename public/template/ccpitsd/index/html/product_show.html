@@ -1,0 +1,31 @@
+{extend name='base' /}
+
+{block name='main'}
+
+<!-- ==========Page Header Section Starts Here========== -->
+<section class="page-header bg_img" data-background="{tp:cate id=" $cate['topid']" type='image' /}">
+<div class="container">
+    <div class="page-header-content">
+        <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
+        <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">首页</a>
+            </li>
+            <li><a href="{tp:cate id="$cate['topid']" type='url' /}">{tp:cate id="$cate['topid']" type='cate_name' /}</a></li>
+        </ul>
+    </div>
+</div>
+</section>
+<!-- ==========Page Header Section Ends Here========== -->
+
+<!-- ==========About Section Starts Here========== -->
+<div class="about-section padding-top-2 padding-bottom-2">
+    <div class="container">
+        <h3>{$info.title}</h3>
+        {$info.content|raw}
+    </div>
+</div>
+<!-- ==========About Section Ends Here========== -->
+
+{/block}

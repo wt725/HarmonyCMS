@@ -1,4 +1,4 @@
-html{ background-color:#f2f2f2}
+html{ background-image: linear-gradient(to right, #cef , #dfc);}
 .daohang{border-top: 1px solid #f6f6f6;padding: 0 15px;height: 50px;line-height: 50px;margin-bottom: 0;border-radius: 0;background-color: #fff;}
 .layui-nav-item .layui-icon{ margin-right:10px}
 .layui-nav-child a{ padding:0 20px 0 40px !important}

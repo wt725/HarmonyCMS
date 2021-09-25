@@ -174,7 +174,8 @@ textarea {
  * Hide visually and from screen readers
  */
 .hidden {
-  display: none !important; }
+    display: none !important;
+}
 
 /*
 * Hide only visually, but have it available for screen readers:
@@ -185,16 +186,17 @@ textarea {
 *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
 */
 .visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-  /* 1 */ }
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+    /* 1 */
+}
 
 /*
 * Extends the .visuallyhidden class to allow the element
@@ -203,19 +205,21 @@ textarea {
 */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-  white-space: inherit; }
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+}
 
 /*
 * Hide visually and from screen readers, but maintain layout
 */
 .invisible {
-  visibility: hidden; }
+    visibility: hidden;
+}
 
 /*
 * Clearfix: contain floats
@@ -230,13 +234,15 @@ textarea {
 */
 .clearfix:before,
 .clearfix:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */ }
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
 
 .clearfix:after {
-  clear: both; }
+    clear: both;
+}
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -244,10 +250,12 @@ textarea {
    Modify as content requires.
    ========================================================================== */
 @media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */ }
+    /* Style adjustments for viewports that meet the condition */
+}
 
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */ }
+    /* Style adjustments for high resolution devices */
+}
 
 /* ==========================================================================
    Print styles.
@@ -255,64 +263,74 @@ textarea {
    https://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
 @media print {
-  *,
-  *:before,
-  *:after {
-    background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster */
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    text-shadow: none !important; }
-  a,
-  a:visited {
-    text-decoration: underline; }
-  a[href]:after {
-    content: " (" attr(href) ")"; }
-  abbr[title]:after {
-    content: " (" attr(title) ")"; }
-  /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
-}
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster */
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
 
-pre {
-    white-space: pre-wrap !important;
-}
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
 
-pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-}
-  /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
-thead {
-    display: table-header-group;
-}
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
 
-tr,
-  img {
-    page-break-inside: avoid;
-}
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
 
-p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-}
+    /*
+       * Don't show links that are fragment identifiers,
+       * or use the `javascript:` pseudo protocol
+       */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
 
-h2,
-  h3 {
-    page-break-after: avoid;
-} }
+    pre {
+        white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+       * Printing Tables:
+       * http://css-discuss.incutio.com/wiki/Printing_Tables
+       */
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -323,9 +341,9 @@ h2,
  */
 html {
     line-height: 1.15;
-  /* 1 */
+    /* 1 */
     -webkit-text-size-adjust: 100%;
-  /* 2 */
+    /* 2 */
 }
 
 /* Sections
@@ -361,11 +379,11 @@ h1 {
  */
 hr {
     box-sizing: content-box;
-  /* 1 */
+    /* 1 */
     height: 0;
-  /* 1 */
+    /* 1 */
     overflow: visible;
-  /* 2 */
+    /* 2 */
 }
 
 /**
@@ -374,9 +392,9 @@ hr {
  */
 pre {
     font-family: monospace, monospace;
-  /* 1 */
+    /* 1 */
     font-size: 1em;
-  /* 2 */
+    /* 2 */
 }
 
 /* Text-level semantics
@@ -394,11 +412,11 @@ a {
  */
 abbr[title] {
     border-bottom: none;
-  /* 1 */
+    /* 1 */
     text-decoration: underline;
-  /* 2 */
+    /* 2 */
     text-decoration: underline dotted;
-  /* 2 */
+    /* 2 */
 }
 
 /**
@@ -417,9 +435,9 @@ code,
 kbd,
 samp {
     font-family: monospace, monospace;
-  /* 1 */
+    /* 1 */
     font-size: 1em;
-  /* 2 */
+    /* 2 */
 }
 
 /**
@@ -470,13 +488,13 @@ optgroup,
 select,
 textarea {
     font-family: inherit;
-  /* 1 */
+    /* 1 */
     font-size: 100%;
-  /* 1 */
+    /* 1 */
     line-height: 1.15;
-  /* 1 */
+    /* 1 */
     margin: 0;
-  /* 2 */
+    /* 2 */
 }
 
 /**
@@ -485,7 +503,7 @@ textarea {
  */
 button,
 input {
-  /* 1 */
+    /* 1 */
     overflow: visible;
 }
 
@@ -495,7 +513,7 @@ input {
  */
 button,
 select {
-  /* 1 */
+    /* 1 */
     text-transform: none;
 }
 
@@ -545,17 +563,17 @@ fieldset {
  */
 legend {
     box-sizing: border-box;
-  /* 1 */
+    /* 1 */
     color: inherit;
-  /* 2 */
+    /* 2 */
     display: table;
-  /* 1 */
+    /* 1 */
     max-width: 100%;
-  /* 1 */
+    /* 1 */
     padding: 0;
-  /* 3 */
+    /* 3 */
     white-space: normal;
-  /* 1 */
+    /* 1 */
 }
 
 /**
@@ -579,9 +597,9 @@ textarea {
 [type="checkbox"],
 [type="radio"] {
     box-sizing: border-box;
-  /* 1 */
+    /* 1 */
     padding: 0;
-  /* 2 */
+    /* 2 */
 }
 
 /**
@@ -598,9 +616,9 @@ textarea {
  */
 [type="search"] {
     -webkit-appearance: textfield;
-  /* 1 */
+    /* 1 */
     outline-offset: -2px;
-  /* 2 */
+    /* 2 */
 }
 
 /**
@@ -616,9 +634,9 @@ textarea {
  */
 ::-webkit-file-upload-button {
     -webkit-appearance: button;
-  /* 1 */
+    /* 1 */
     font: inherit;
-  /* 2 */
+    /* 2 */
 }
 
 /* Interactive
@@ -683,26 +701,26 @@ h6 {
 }
 
 h1 a,
-  h2 a,
-  h3 a,
-  h4 a,
-  h5 a,
-  h6 a {
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
     color: #232323;
 }
 
 h1 a:hover,
-    h2 a:hover,
-    h3 a:hover,
-    h4 a:hover,
-    h5 a:hover,
-    h6 a:hover {
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
     color: #fb3b3a;
 }
 
 @media (max-width: 767px) {
     h3,
-  h4 {
+    h4 {
         font-weight: 500;
     }
 }
@@ -1610,6 +1628,7 @@ header::before {
 
 .header-middle .header-wrapper .logo {
     width: 140px;
+    margin: -5px;
 }
 
 .header-middle .header-wrapper .info-area {
@@ -1675,7 +1694,7 @@ header::before {
     }
 
     .header-middle .header-wrapper .info-area .info-item .info-content span,
-          .header-middle .header-wrapper .info-area .info-item .info-content a {
+    .header-middle .header-wrapper .info-area .info-item .info-content a {
         font-size: 14px;
     }
 
@@ -1724,6 +1743,7 @@ header::before {
 
 .header-area .logo {
     width: 140px;
+    margin: 0;
 }
 
 .header-area .menu {
@@ -1897,6 +1917,11 @@ header::before {
 @media (max-width: 991px) and (max-width: 575px) {
     .header-area .menu {
         padding: 0 15px;
+    }
+    .header-area .menu.active {
+        -webkit-transform: scaleY(1);
+        -ms-transform: scaleY(1);
+        transform: scaleY(1);
     }
 }
 
@@ -2189,6 +2214,7 @@ header::before {
         margin-bottom: 30px;
     }
 }
+
 .banner-content .description {
     font-size: 60px;
     line-height: 75px;
@@ -2196,6 +2222,7 @@ header::before {
     margin-bottom: 40px;
     text-transform: uppercase;
 }
+
 .banner-content .banner-buttons {
     margin: -5px;
 }
@@ -3829,7 +3856,6 @@ header::before {
 .client-item-2 .client-content .ratings {
     color: #fb3b3a;
 }
-
 .about-content ul li {
     font-weight: 600;
     font-size: 18px;

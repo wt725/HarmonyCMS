@@ -1,0 +1,206 @@
+{extend name='base' /}
+
+{block name='main'}
+
+<!-- ==========Page Header Section Starts Here========== -->
+<section class="page-header bg_img" data-background="{tp:cate id="$cate['topid']" type='image' /}">
+<div class="container">
+    <div class="page-header-content">
+        <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
+        <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
+        <ul class="breadcrumb">
+            <li>
+                <a href="/">首页</a>
+            </li>
+            {tp:nav name='nav' id="$cate['topid']"}
+            <li><a {eq name="$cate.id" value="$nav.id" }class="active" {/eq} href="{$nav.url}">{$nav.cate_name}</a>
+            </li>
+            {/tp:nav}
+        </ul>
+    </div>
+</div>
+</section>
+<!-- ==========Page Header Section Ends Here========== -->
+
+<!-- ==========Maps Section Starts Here========== -->
+<div class="map-section padding-top-2">
+    <div class="container">
+        <div style="width:603px;height:500px; border: 1px solid #ccc;" id="mapholder"></div>
+        <!--
+        <div style="margin: 20px 0;">你的当前位置：<span id="address"></span></div>
+        <label>经度(lng):</label><input type="text" id="lng" name="lng"><br>
+        <label>纬度(lat):</label><input type="text" id="lat" name="lat">
+        <div id="latlng" style="margin: 20px auto;"></div>
+        -->
+    </div>
+</div>
+<!-- ==========Maps Section Ends Here========== -->
+
+<!-- ==========Contact Section Starts Here========== -->
+<div class="contact-section padding-top-2 bg_img" data-background="./assets/images/contact/contact-bg.png">
+    <div class="container">
+        <div class="row justify-content-center mb-30-none contact-wrapper-2">
+            <div class="col-md-6 col-lg-4">
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <div class="thumb">
+                            <img src="/uploads/20210310/contact1.png" alt="contact">
+                        </div>
+                        <h4 class="title">地址</h4>
+                    </div>
+                    <div class="contact-content">
+                        <p>{$system.address}</p>
+                    </div>
+                    <div class="contact-bg-icon">
+                        <img src="/uploads/20210310/contact1.png" alt="contact">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <div class="thumb">
+                            <img src="/uploads/20210310/contact2.png" alt="contact">
+                        </div>
+                        <h4 class="title">邮件</h4>
+                    </div>
+                    <div class="contact-content">
+                        <ul>
+                            <li><a href="{$system.email}">{$system.email}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-bg-icon">
+                        <img src="/uploads/20210310/contact2.png" alt="contact">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <div class="thumb">
+                            <img src="/uploads/20210310/contact3.png" alt="contact">
+                        </div>
+                        <h4 class="title">电话</h4>
+                    </div>
+                    <div class="contact-content">
+                        <ul>
+                            <li><a href="Tel:{$system.tel}">{$system.tel}</a></li>
+                            <li><a href="Tel:{$system.mobile_phone}">{$system.mobile_phone}</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact-bg-icon">
+                        <img src="/uploads/20210310/contact3.png" alt="contact">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-wrapper">
+            <h4 class="title">联系我们</h4>
+            <form class="contact-form" id="contact-form" action="{:url('index/add')}" method="post">
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="标题" id="title">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="姓名" id="name">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="phone" placeholder="电话" id="phone">
+                </div>
+                <div class="form-group w-100">
+                    <textarea name="content" placeholder="留言内容" id="content"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="cate_id" value="{$cate.id}">
+                    <input type="submit" value="提交">
+                </div>
+            </form>
+            <p class="form-messege"></p>
+        </div>
+    </div>
+</div>
+<!-- ==========Contact Section Ends Here========== -->
+
+{/block}
+
+{block name='js'}
+<script src="http://cdn.bootcss.com/jquery/2.1.1-rc2/jquery.min.js"></script>
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=6LLBZ-QMLCX-HNA4L-T3ADN-4O3V5-BFFLB"></script>
+<script>
+    $("#mapholder").css("width", "100%");
+    var latnow, lngnow, center, map, markersArray = [];
+    latnow = 36.661633;
+    lngnow = 117.000977;
+    $("#lng").val(lngnow);
+    $("#lat").val(latnow);
+
+    if (latnow == 'undefined' || latnow == null || latnow == '' || latnow == 0) {
+        if (window.navigator.geolocation) {
+            window.navigator.geolocation.getCurrentPosition(handleSuccess);
+        }
+    } else {
+        center = new qq.maps.LatLng(latnow, lngnow);
+        init();
+    }
+    function init() {
+        map = new qq.maps.Map(document.getElementById('mapholder'),{
+            center: center,
+            zoom: 18
+        });
+        var marker = new qq.maps.Marker({
+            position: center,
+            map: map
+        });
+        markersArray.push(marker);
+        qq.maps.event.addListener(map, 'click', function(event) {
+            lngnow = event.latLng.getLng().toFixed(6);
+            latnow = event.latLng.getLat().toFixed(6);
+            $("#lng").val(lngnow);
+            $("#lat").val(latnow);
+            latLng = new qq.maps.LatLng(latnow, lngnow);
+            map.panTo(latLng);
+            geocoder.getAddress(latLng);
+            deleteOverlays();
+            addMarker(event.latLng);
+        });
+        geocoder = new qq.maps.Geocoder({
+            complete : function(result){
+                $("#address").html(result.detail.address);
+            }
+        });
+        geocoder.getAddress(center);
+    }
+    function handleSuccess(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        //转换GPS坐标为腾讯坐标
+        qq.maps.convertor.translate(new qq.maps.LatLng(lat,lng), 1, function(res){
+            center = res[0];
+            $("#latlng").append('GPS 坐标信息：<br>经度（lng）：' + lng + '<br>纬度（lat）：' + lat + '<br><br>腾讯地图 坐标信息：');
+            lat = center.getLat().toFixed(6);
+            lng = center.getLng().toFixed(6);
+            $('#lat').val(lat);
+            $('#lng').val(lng);
+            latnow = lat;
+            lngnow = lng;
+            init();
+            $("#latlng").append('<br>经度（lng）：' + lng + '<br>纬度（lat）：' + lat);
+        });
+    }
+    function addMarker(location) {
+        var marker = new qq.maps.Marker({
+            position: location,
+            map: map
+        });
+        markersArray.push(marker);
+    }
+    function deleteOverlays() {
+        if (markersArray) {
+            for (i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+            markersArray.length = 0;
+        }
+    }
+</script>
+{/block}

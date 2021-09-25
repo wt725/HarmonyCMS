@@ -1,0 +1,52 @@
+{extend name='base' /}
+
+{block name='main'}
+
+<!-- ==========Page Header Section Starts Here========== -->
+<section class="page-header bg_img" data-background="{tp:cate id=" $cate['topid']" type='image' /}">
+    <div class="container">
+        <div class="page-header-content">
+            <h2 class="title">{tp:cate id="$cate['topid']" type='cate_name' /}</h2>
+            <h3 class="description">{tp:cate id="$cate['topid']" type='en_name' /}</h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">首页</a>
+                </li>
+                <li>{tp:cate id="$cate['topid']" type='cate_name' /}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- ==========Page Header Section Ends Here========== -->
+
+<!-- ==========Service Section Starts Here========== -->
+<div class="service-section padding-top padding-bottom">
+    <div class="container">
+        <div class="row justify-content-center mb-30-none">
+
+            {tp:list name="list"}
+            <div class="col-md-6 col-lg-4 mb-30">
+                <div class="service-item-2">
+                    <div class="service-thumb">
+                        <i class="flaticon-team"></i>
+                    </div>
+                    <div class="service-content">
+                        <h5 class="{$list.title}"><a href="{$list.url}">{$list.title}</a></h5>
+                        <p>{$list.summary}</p>
+                    </div>
+                </div>
+            </div>
+            {/tp:list}
+            {if empty($list)}
+            <h2 class="aligncenter">暂无相关内容</h2>
+            {/if}
+
+            <div class="col-md-12 col-sm-12">
+                {$page|raw}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==========Service Section Ends Here========== -->
+
+{/block}
