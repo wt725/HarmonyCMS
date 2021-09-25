@@ -146,7 +146,8 @@
                                     </p>
                                     {/if}
                                     <div class="folio-buttons">
-                                        <a href="{$list.image}" title="{$list.title}" class="folio"><i class="fa fa-search"></i></a>
+                                        <a href="{$list.image}" title="{$list.title}" class="folio"><i
+                                                class="fa fa-search"></i></a>
                                         <a href="{$list.url}"><i class="fa fa-link"></i></a>
                                     </div>
                                 </div>
@@ -262,7 +263,8 @@
                         {tp:list id='4' name="list" order="sort, hits desc" limit="6"}
                         <div class="item">
                             <div class="latest-blog-post-img">
-                                <img src="{$list.image|default='/template/business/index/images/news/1.jpg'}" alt="{$list.title}">
+                                <img src="{$list.image|default='/template/business/index/images/news/1.jpg'}"
+                                     alt="{$list.title}">
                                 <div class="latest-blog-post-date">
                                     {$list.create_time|date="d"}
                                     <span>{$list.create_time|date="m"}月</span>
@@ -292,31 +294,31 @@
         </div>
     </section>
     <!-- section close -->
-    {/block}
-
+</div>
+{/block}
 
 {block name='js'}
 <script type="text/javascript">
     /* Portfolio Sorting */
-    jQuery(document).ready(function($){
+    jQuery(document).ready(function ($) {
         $(".project-slider").owlCarousel({
             singleItem: true,
             lazyLoad: true,
             navigation: false,
-            autoPlay : true,
-            slideSpeed : 400,
+            autoPlay: true,
+            slideSpeed: 400,
         });
         $("#related-projects").owlCarousel({
             items: 4,
-            itemsCustom : false,
-            itemsDesktop : [1199, 3],
-            itemsDesktopSmall : [979, 2],
-            itemsTablet : [768, 2],
-            itemsTabletSmall : false,
-            itemsMobile : [479, 1],
+            itemsCustom: false,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 2],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1],
             navigation: false,
             pagination: false,
         });
-    } )(jQuery);
+    })(jQuery);
 </script>
 {/block}
