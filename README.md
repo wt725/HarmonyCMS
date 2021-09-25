@@ -1,7 +1,7 @@
 HarmonyCMS V1.0 内容管理系统
 ===============
 
-> 运行环境要求PHP7.1+。
+> 运行环境要求PHP7.3+。
 
 > HarmonyCMS 运行目录: public/
 
