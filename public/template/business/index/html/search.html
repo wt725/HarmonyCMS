@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>{$title}</h1>
+                <h1>{$search} 的搜索结果</h1>
                 <ul class="breadcrumbs">
                     <li><a href="/">首页</a></li>
                     <b>/</b>
@@ -22,7 +22,7 @@
             <div class="col-md-9">
                 <div class="blog-list">
                     <!-- post begin -->
-                    {tp:list name="list"}
+                    {tp:search search="$search" table="article" name="list"}
                     <article>
                         <div class="post-media">
                             <img alt="" src="{$list.image|default='/template/business/index/images/news/1.jpg'}" class="img-responsive">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </article>
-                    {/tp:list}
+                    {/tp:search}
                     <!-- post close -->
                 </div>
 
@@ -74,7 +74,7 @@
                         <div class="tiny-border"></div>
                         <ul>
                             {tp:nav name='nav' id="$cate['topid']"}
-                            <li class="cat-item"><a {eq name="$cate.id" value="$nav.id"}class="active"{/eq} href="{$nav.url}">{$nav.cate_name}</a></li>
+                            <li class="cat-item"><a href="{$nav.url}">{$nav.cate_name}</a></li>
                             {/tp:nav}
                         </ul>
                     </aside>
