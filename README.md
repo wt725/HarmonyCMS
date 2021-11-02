@@ -35,5 +35,5 @@ HarmonyCMS V1.0 内容管理系统
 
 ## 版权信息
 
-> 版权所有Copyright © 2019-2021 by HarmonyCMS (http://HarmonyCMS.ok5168.com)
+> 版权所有Copyright © 2019-2022 by HarmonyCMS (http://HarmonyCMS.ok5168.com)
 All rights reserved。
